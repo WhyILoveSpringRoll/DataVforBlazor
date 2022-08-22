@@ -1,4 +1,4 @@
-﻿<div class="dv-border-box-1">
+﻿<div class="dv-border-box-1" style="width:@(width+"px");height:@(height+"px")">
 
     <svg class="border" width="@width" height="@height">
         <polygon fill="transparent" points="10, 27 10, @(height-27) 13, @(height - 24) 13, @(height - 21) 24, @(height - 11)
@@ -119,7 +119,7 @@
 
 
 
-    <div class="border-box-content">
+    <div class="border-box-content" style="line-height: @(height+"px")">
         @ChildContent
     </div>
 
@@ -127,8 +127,7 @@
 <style>
     .dv-border-box-1 {
         position: relative;
-        width: 100%;
-        height: 100%;
+       
     }
 
         .dv-border-box-1 .border {
@@ -158,13 +157,9 @@
             height: 100%;
         }
 
-    .svg-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+        .border-box-content {
+           text-align:center;
+        }
 
 </style>
 @code {
@@ -174,5 +169,5 @@
     int height = 240;
     int width = 474;
     List<string> border = new List<string> { "left-top", "right-top", "left-bottom", "right-bottom" };
-    List<string> mergedColor = new List<string> { "red", "green" };
+    List<string> mergedColor = new List<string> { "#4fd2dd", "#235fa7" };
 }
