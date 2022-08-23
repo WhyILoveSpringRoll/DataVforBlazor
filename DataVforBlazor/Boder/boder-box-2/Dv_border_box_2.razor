@@ -1,0 +1,22 @@
+﻿@namespace DataVforBlazor
+
+<div id="@ID" class="dv-border-box-2" style="Width:@width;Height:@height;">
+    <svg class="dv-border-svg-container" style="Width:@width;Height:@height;">
+        <polygon fill="@BackgroundColor" points="7, 7 @(Width - 7), 7 @(Width - 7),@(Height - 7) 7,@(Height - 7) " />
+
+        <polyline stroke="@MergedColor[0]"
+                  points="2, 2 @(Width - 2) ,2 @(Width - 2),@(Height - 2) 2,@(Height - 2) 2, 2" />
+        <polyline stroke="@MergedColor[1]"
+                  points="6, 6 @(Width - 6), 6 @(Width - 6),@(Height - 6) 6,@(Height - 6) 6, 6" />
+        <circle fill="@MergedColor[0]" cx="11" cy="11" r="1" />
+        <circle fill="@MergedColor[0]" cx="@(Width - 11)" cy="11" r="1" />
+        <circle fill="@MergedColor[0]" cx="@(Width - 11)" cy="@(Height-11)" r="1" />
+        <circle fill="@MergedColor[0]" cx="11" cy="@(Height-11)" r="1" />
+    </svg>
+
+    <div class="border-box-content">
+        @ChildContent
+    </div>
+</div>
+<button onclick="@Click">fuckbutton</button>
+

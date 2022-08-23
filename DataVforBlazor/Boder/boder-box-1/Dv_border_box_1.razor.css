@@ -1,0 +1,47 @@
+﻿.dv-border-box-1 {
+    position: relative;
+   /* display: inline-block;*/
+    min-height: 150px;
+    min-width: 200px;
+}
+
+    .dv-border-box-1 .dvborder {
+        position: absolute;
+        display: block;
+        min-height: 150px;
+        min-width: 200px;
+    }
+
+    .dv-border-box-1 .right-top {
+        right: 0px;
+        transform: rotateY(180deg);
+    }
+
+    .dv-border-box-1 .left-bottom {
+        bottom: 0px;
+        transform: rotateX(180deg);
+    }
+
+    .dv-border-box-1 .right-bottom {
+        right: 0px;
+        bottom: 0px;
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+
+    .dv-border-box-1 .border-box-content {
+        position: relative;
+        Width: 100%;
+        Height: 100%;
+    }
+
+.border-box-content {
+    display: flex;
+    min-height:150px;
+    min-width:200px;
+    justify-content: center;
+    align-items: center;
+    padding-top:2%;
+    padding-bottom:2%;
+    padding-left:3%;
+    padding-right:6%;
+}

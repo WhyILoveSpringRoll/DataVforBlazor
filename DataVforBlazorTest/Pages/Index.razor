@@ -3,8 +3,26 @@
 <PageTitle>Index</PageTitle>
 
 
-<DataVforBlazor.Components.Border.Dv_border_box_1>
 
-    <div style="width:50px;height:50px;background-color:black"></div>
-</DataVforBlazor.Components.Border.Dv_border_box_1>
 
+<Dv_border_box_1  Width="@width" Height="@height" BackgroundColor="@backgroundcolor" MergedColor="new List<string>{color1,color2}">
+ 
+<CardTest></CardTest>
+
+</Dv_border_box_1>
+
+
+<Input @bind-Value="@width" />
+<Input @bind-Value="@height" />
+<input type="color" @bind-value="@color1"/>
+<input type="color" @bind-value="@color2" />
+<input type="color" @bind-value="@backgroundcolor" />
+@code
+{
+    int width = 0;
+    int height = 0;
+    string color1 = "#4fd2dd";
+    string color2 = "#235fa7";
+    string backgroundcolor = "transparent";
+   
+}
