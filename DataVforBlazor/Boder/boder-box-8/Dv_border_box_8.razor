@@ -1,0 +1,51 @@
+﻿@namespace DataVforBlazor
+@inherits BoderBase
+
+<div id="@ID" class="dv-border-box-8" style="width:@width;height:@height;">
+    <svg style="width:@width;height:@height;" class="dv-border-svg-container">
+        <defs>
+            <path id="@path"
+                  d="@PathD()"
+                  fill="@BackgroundColor" />
+            <radialGradient id="@gradient"
+                            cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff"
+                      stop-opacity="1" />
+                <stop offset="100%" stop-color="#fff"
+                      stop-opacity="0" />
+            </radialGradient>
+
+            <mask id="@mask">
+                <circle cx="0" cy="0" r="150" fill="url(#@gradient)">
+                    <animateMotion dur="@(Dur)s"
+                                   path="@PathD()"
+                                   rotate="auto"
+                                   repeatCount="indefinite" 
+                                   attributeName="stroke-dasharray" />
+                </circle>
+            </mask>
+        </defs>
+
+        <polygon  fill="@BackgroundColor" points="5, 5 @(Width - 5), 5 @(Width - 5) @(Height - 5) 5, @(Height - 5)" />
+
+        <use   stroke="@MergedColor[0]"
+             stroke-width="1"
+             xlink:href="#@path" />
+
+        <use  stroke="@MergedColor[1]"
+             stroke-width="3"
+             xlink:href="#@path"
+             mask="url(#@mask)">
+            <animate attributeName="stroke-dasharray"
+                     from="0, @Length()"
+                     to="@Length(), 0"
+                     dur="@(Dur)s"
+                     repeatCount="indefinite" />
+        </use>
+    </svg>
+
+    <div class="border-box-content">
+        @ChildContent
+    </div>
+</div>
+

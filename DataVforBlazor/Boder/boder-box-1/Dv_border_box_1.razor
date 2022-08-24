@@ -1,9 +1,10 @@
 ﻿@namespace DataVforBlazor
 @using System.Drawing
+@inherits BoderBase
 <div id="@ID" class="dv-border-box-1" style="Width:@width;Height:@height;">
 
     <svg class="dvborder" style="Width:@width;Height:@height;">
-        <polygon fill="blue" points="10, 27 10, @(Height-27) 13, @(Height - 24) 13, @(Height - 21) 24, @(Height - 11)
+        <polygon fill="@BackgroundColor" points="10, 27 10, @(Height-27) 13, @(Height - 24) 13, @(Height - 21) 24, @(Height - 11)
       38, @(Height - 11) 41, @(Height - 8) 73, @(Height - 8) 75, @(Height - 10) 81, @(Height - 10)
       85, @(Height - 6) @(Width - 85), @(Height - 6) @(Width - 81), @(Height - 10) @(Width - 75), @(Height - 10)
       @(Width - 73), @(Height - 8) @(Width - 41), @(Height - 8) @(Width - 38), @(Height - 11)
@@ -45,6 +46,5 @@
             @ChildContent
     </div>
 </div>
-<button onclick="@Click">fuckbutton</button>
 
 

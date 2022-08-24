@@ -5,11 +5,12 @@
 
 
 
-<Dv_border_box_1  Width="@width" Height="@height" BackgroundColor="@backgroundcolor" MergedColor="new List<string>{color1,color2}">
- 
-<CardTest></CardTest>
+<div  style="background-color:black;padding:15px">
+    <Dv_border_box_8  Width="@width" Height="@height" BackgroundColor="@backgroundcolor" MergedColor="@(new List<string>{color1,color2})">
+      fuck
+    </Dv_border_box_8>
 
-</Dv_border_box_1>
+</div>
 
 
 <Input @bind-Value="@width" />
@@ -19,10 +20,11 @@
 <input type="color" @bind-value="@backgroundcolor" />
 @code
 {
-    int width = 0;
-    int height = 0;
+    int width = 1200;
+    int height = 400;
     string color1 = "#4fd2dd";
     string color2 = "#235fa7";
     string backgroundcolor = "transparent";
+    //string backgroundcolor = "yellow";
    
 }

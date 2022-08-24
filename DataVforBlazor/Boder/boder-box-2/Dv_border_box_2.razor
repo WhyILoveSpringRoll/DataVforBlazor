@@ -1,7 +1,7 @@
 ﻿@namespace DataVforBlazor
-
-<div id="@ID" class="dv-border-box-2" style="Width:@width;Height:@height;">
-    <svg class="dv-border-svg-container" style="Width:@width;Height:@height;">
+@inherits BoderBase
+<div id="@ID" class="dv-border-box-2" style="width:@width;height:@height;">
+    <svg class="dv-border-svg-container" style="width:@width;height:@height;">
         <polygon fill="@BackgroundColor" points="7, 7 @(Width - 7), 7 @(Width - 7),@(Height - 7) 7,@(Height - 7) " />
 
         <polyline stroke="@MergedColor[0]"
@@ -18,5 +18,4 @@
         @ChildContent
     </div>
 </div>
-<button onclick="@Click">fuckbutton</button>
 

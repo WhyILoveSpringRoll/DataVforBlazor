@@ -1,0 +1,27 @@
+﻿@namespace DataVforBlazor
+@inherits BoderBase
+<div id="@ID" class="dv-border-box-6" style="width:@width;height:@height;">
+    <svg style="width:@width;height:@height;" class="dv-border-svg-container">
+        <polygon fill="@BackgroundColor" points=" 9, 7 @(Width - 9), 7 @(Width - 9), @(Height - 7) 9, @(Height - 7)" />
+        <circle fill="@MergedColor[1]" cx="5" cy="5" r="2" />
+        <circle fill="@MergedColor[1]" cx="@(Width - 5)" cy="5" r="2" />
+        <circle fill="@MergedColor[1]" cx="@(Width - 5)" cy="@(Height - 5)" r="2" />
+        <circle fill="@MergedColor[1]" cx="5" cy="@(Height - 5)" r="2" />
+        <polyline stroke="@MergedColor[0]" points="10, 4 @(Width - 10), 4" />
+        <polyline stroke="@MergedColor[0]" points="10, @(Height - 4) @(Width - 10), @(Height - 4)" />
+        <polyline stroke="@MergedColor[0]" points="5, 70 5, @(Height - 70)" />
+        <polyline stroke="@MergedColor[0]" points="@(Width - 5), 70 @(Width - 5), @(Height - 70)" />
+        <polyline stroke="@MergedColor[0]" points="3, 10, 3, 50" />
+        <polyline stroke="@MergedColor[0]" points="7, 30 7, 80" />
+        <polyline stroke="@MergedColor[0]" points="@(Width - 3), 10 @(Width - 3), 50" />
+        <polyline stroke="@MergedColor[0]" points="@(Width - 7), 30 @(Width - 7), 80" />
+        <polyline stroke="@MergedColor[0]" points="3, @(Height - 10) 3, @(Height - 50)" />
+        <polyline stroke="@MergedColor[0]" points="7, @(Height - 30) 7, @(Height - 80)" />
+        <polyline stroke="@MergedColor[0]" points="@(Width - 3), @(Height - 10) @(Width - 3), @(Height - 50)" />
+        <polyline stroke="@MergedColor[0]" points="@(Width - 7), @(Height - 30) @(Width - 7), @(Height - 80)" />
+    </svg>
+
+    <div class="border-box-content">
+        @ChildContent
+    </div>
+</div>

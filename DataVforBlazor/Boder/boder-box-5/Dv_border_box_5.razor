@@ -1,0 +1,27 @@
+﻿@namespace DataVforBlazor
+@inherits BoderBase
+<div id="@ID" class="dv-border-box-5" style="width:@width;height:@height;">
+    <svg style="width:@width;height:@height;" class="dv-border-svg-container @(Reverse?"dv-reverse":"")">
+        <polygon fill="@BackgroundColor" points="
+        10, 22 @(Width - 22), 22 @(Width - 22), @(Height - 86) @(Width - 84), @(Height - 24) 10, @(Height - 24)
+      " />
+
+        <polyline class="dv-bb5-line-1"
+                  stroke="@MergedColor[0]"
+                  points="8, 5 @(Width - 5), 5 @(Width - 5), @(Height - 100)
+          @(Width - 100), @(Height - 5) 8, @(Height - 5) 8, 5" />
+        <polyline class="dv-bb5-line-2"
+                  stroke="@MergedColor[1]"
+                  points="3, 5 @(Width - 20), 5 @(Width - 20), @(Height - 60)
+          @(Width - 74), @(Height - 5) 3, @(Height - 5) 3, 5" />
+        <polyline class="dv-bb5-line-3" stroke="@MergedColor[1]" points="50, 13 @(Width - 35), 13" />
+        <polyline class="dv-bb5-line-4" stroke="@MergedColor[1]" points="15, 20 @(Width - 35), 20" />
+        <polyline class="dv-bb5-line-5" stroke="@MergedColor[1]" points="15, @(Height - 20) @(Width - 110), @(Height - 20)" />
+        <polyline class="dv-bb5-line-6" stroke="@MergedColor[1]" points="15, @(Height - 13) @(Width - 110), @(Height - 13)" />
+    </svg>
+
+    <div class="border-box-content">
+      @ChildContent
+    </div>
+</div>
+

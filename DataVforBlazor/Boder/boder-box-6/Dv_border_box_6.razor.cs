@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataVforBlazor
 {
-    public partial class Dv_border_box_2:BoderBase
+    public partial class Dv_border_box_6:BoderBase
     {
-        public override List<string> MergedColor { get; set; } = new List<string> { "#fff", "rgba(255, 255, 255, 0.6)" };
+        [Parameter]
+        public override List<string> MergedColor { get; set; } = new List<string> { "rgba(255, 255, 255, 0.35)", "rgba(255, 255, 255, 0.20)" };
     }
 }
