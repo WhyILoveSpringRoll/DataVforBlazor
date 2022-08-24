@@ -1,0 +1,180 @@
+﻿@namespace DataVforBlazor
+@inherits BoderBase
+
+<div id="@ID" class="dv-border-box-11" style="box-shadow: inset 0 0 25px 3px @MergedColor[0];width:@width;height:@height;">
+    <svg class="dv-border-svg-container" style="width:@width;height:@height;">
+        <defs>
+            <filter id="@filterId" height="150%" width="150%" x="-25%" y="-25%">
+                <feMorphology operator="dilate" radius="2" in="SourceAlpha" result="thicken" />
+                <feGaussianBlur in="thicken" stdDeviation="3" result="blurred" />
+                <feFlood flood-color="@MergedColor[1]" result="glowColor" />
+                <feComposite in="glowColor" in2="blurred" operator="in" result="softGlowColored" />
+                <feMerge>
+                    <feMergeNode in="softGlowColored" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+
+        <polygon fill="@BackgroundColor" points="
+        20, 32 @(Width * 0.5 - TitleWidth / 2), 32 @(Width * 0.5 - TitleWidth / 2 + 20), 53
+        @(Width * 0.5 + TitleWidth / 2 - 20), 53 @(Width * 0.5 + TitleWidth / 2), 32
+        @(Width - 20), 32 @(Width - 8), 48 @(Width - 8), @(Height - 25) @(Width - 20), @(Height - 8)
+        20, @(Height - 8) 8, @(Height - 25) 8, 50
+      " />
+
+        <polyline stroke="@MergedColor[0]"
+                  filter="url(#@filterId)"
+                  points="
+         @((Width - TitleWidth) / 2), 30
+          20, 30 7, 50 7, @(50 + (Height - 167) / 2)
+          13, @(55 + (Height - 167) / 2) 13, @(135 + (Height - 167) / 2)
+          7, @(140 + (Height - 167) / 2) 7, @(Height - 27)
+          20, @(Height - 7) @(Width - 20), @(Height - 7) @(Width - 7), @(Height - 27)
+          @(Width - 7), @(140 + (Height - 167) / 2) @(Width - 13), @(135 + (Height - 167) / 2)
+          @(Width - 13), @(55 + (Height - 167) / 2) @(Width - 7), @(50 + (Height - 167) / 2)
+          @(Width - 7), 50 @(Width - 20), 30 @((Width + TitleWidth) / 2), 30
+         @((Width + TitleWidth) / 2 - 20), 7 @((Width - TitleWidth) / 2 + 20), 7
+         @((Width - TitleWidth) / 2), 30 @((Width - TitleWidth) / 2 + 20), 52
+         @((Width + TitleWidth) / 2 - 20), 52 @((Width + TitleWidth) / 2), 30
+        " />
+
+        <polygon stroke="@MergedColor[0]"
+                 fill="transparent"
+                 points="
+         @((Width + TitleWidth) / 2 - 5), 30 @((Width + TitleWidth) / 2 - 21), 11
+         @((Width + TitleWidth) / 2 - 27), 11 @((Width + TitleWidth) / 2 - 8), 34
+        " />
+
+        <polygon stroke="@MergedColor[0]"
+                 fill="transparent"
+                 points="
+         @((Width - TitleWidth) / 2 + 5), 30 @((Width - TitleWidth) / 2 + 22), 49
+         @((Width - TitleWidth) / 2 + 28), 49 @((Width - TitleWidth) / 2 + 8), 26
+        " />
+
+        <polygon stroke="@MergedColor[0]"
+                 fill="fade(@MergedColor[1] || @MergedColor[0], 30)"
+                 filter="url(#@(filterId)"
+                 points="
+         @((Width + TitleWidth) / 2 - 11), 37 @((Width + TitleWidth) / 2 - 32), 11
+         @((Width - TitleWidth) / 2 + 23), 11 @((Width - TitleWidth) / 2 + 11), 23
+         @((Width - TitleWidth) / 2 + 33), 49 @((Width + TitleWidth) / 2 - 22), 49
+        " />
+
+        <polygon filter="url(#@(filterId))"
+                 fill="@MergedColor[0]"
+                 opacity="1"
+                 points="
+         @((Width - TitleWidth) / 2 - 10), 37 @((Width - TitleWidth) / 2 - 31), 37
+         @((Width - TitleWidth) / 2 - 25), 46 @((Width - TitleWidth) / 2 - 4), 46
+        ">
+            <animate attributeName="opacity"
+                     values="1;0.7;1"
+                     dur="2s"
+                     begin="0s"
+                     repeatCount="indefinite" />
+        </polygon>
+
+
+        <polygon :filter="url(#@(filterId))"
+                 fill="@MergedColor[0]"
+                 opacity="0.7"
+                 points="
+         @((Width - TitleWidth) / 2 - 40), 37 @((Width - TitleWidth) / 2 - 61), 37
+         @((Width - TitleWidth) / 2 - 55), 46 @((Width - TitleWidth) / 2 - 34), 46
+        ">
+            <animate attributeName="opacity"
+                     values="0.7;0.4;0.7"
+                     dur="2s"
+                     begin="0s"
+                     repeatCount="indefinite" />
+        </polygon>
+
+        <polygon filter="url(#@(filterId))"
+                 fill="@MergedColor[0]"
+                 opacity="0.5"
+                 points="
+         @((Width - TitleWidth) / 2 - 70), 37 @((Width - TitleWidth) / 2 - 91), 37
+         @((Width - TitleWidth) / 2 - 85), 46 @((Width - TitleWidth) / 2 - 64), 46
+        ">
+            <animate attributeName="opacity"
+                     values="0.5;0.2;0.5"
+                     dur="2s"
+                     begin="0s"
+                     repeatCount="indefinite" />
+        </polygon>
+
+        <polygon filter="url(#@(filterId))"
+                 fill="@MergedColor[0]"
+                 opacity="1"
+                 points="
+         @((Width + TitleWidth) / 2 + 30), 37 @((Width + TitleWidth) / 2 + 9), 37
+         @((Width + TitleWidth) / 2 + 3), 46 @((Width + TitleWidth) / 2 + 24), 46
+        ">
+            <animate attributeName="opacity"
+                     values="1;0.7;1"
+                     dur="2s"
+                     begin="0s"
+                     repeatCount="indefinite" />
+        </polygon>
+
+        <polygon filter="url(#@(filterId))"
+                 fill="@MergedColor[0]"
+                 opacity="0.7"
+                 points="
+         @((Width + TitleWidth) / 2 + 60), 37 @((Width + TitleWidth) / 2 + 39), 37
+         @((Width + TitleWidth) / 2 + 33), 46 @((Width + TitleWidth) / 2 + 54), 46
+        ">
+            <animate attributeName="opacity"
+                     values="0.7;0.4;0.7"
+                     dur="2s"
+                     begin="0s"
+                     repeatCount="indefinite" />
+        </polygon>
+
+        <polygon filter="url(#@(filterId))"
+                 fill="@MergedColor[0]"
+                 opacity="0.5"
+                 points="
+         @((Width + TitleWidth) / 2 + 90), 37 @((Width + TitleWidth) / 2 + 69), 37
+         @((Width + TitleWidth) / 2 + 63), 46 @((Width + TitleWidth) / 2 + 84), 46
+        ">
+            <animate attributeName="opacity"
+                     values="0.5;0.2;0.5"
+                     dur="2s"
+                     begin="0s"
+                     repeatCount="indefinite" />
+        </polygon>
+
+        <text class="dv-border-box-11-title"
+              x="@(Width / 2)"
+              y="32"
+              fill="#fff"
+              font-size="18"
+              text-anchor="middle"
+              dominant-baseline="middle">
+            @Title
+        </text>
+
+        <polygon fill="@MergedColor[0]"
+                 filter="url(#@(filterId))"
+                 points="
+          7, @(53 + (Height - 167) / 2) 11, @(57 + (Height - 167) / 2)
+          11, @(133 + (Height - 167) / 2) 7, @(137 + (Height - 167) / 2)
+        " />
+
+        <polygon fill="@MergedColor[0]"
+                 filter="url(#@(filterId))"
+                 points="
+          @(Width - 7), @(53 + (Height - 167) / 2) @(Width - 11), @(57 + (Height - 167) / 2)
+          @(Width - 11), @(133 + (Height - 167) / 2) @(Width - 7), @(137 + (Height - 167) / 2)
+        " />
+    </svg>
+
+
+    <div class="border-box-content">
+        @ChildContent
+    </div>
+</div>
+
