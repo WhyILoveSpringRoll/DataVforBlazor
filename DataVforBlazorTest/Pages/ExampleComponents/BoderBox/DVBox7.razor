@@ -1,5 +1,5 @@
 ﻿
-<div style="margin-bottom:35px;">
+<div style="margin-bottom:55px;">
     <Title Level="3" Style="color:black">@componentName</Title>
     <div style="width:680px;height:240px;background-color:black;padding:45px;">
         <Dv_border_box_7 MergedColor="@(new List<string>{color1,color2})" BackgroundColor="@backgroundcolor">
@@ -7,40 +7,13 @@
         </Dv_border_box_7>
     </div>
     <div style="width:680px;height:63px;border-radius:6px;background-color:black;margin-top:20px;padding-left:20px;line-height:63px">
-        <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#b4009e;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@(">Dv_border_box<")</span><span style="color:#b4009e;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@("/>")</span>
+        <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@(">Dv_border_box<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@("/>")</span>
     </div>
-    <Space Style="margin-top:20px" Direction="DirectionVHType.Vertical">
-        <SpaceItem>
-            <Space Direction="DirectionVHType.Horizontal" Align="center">
-                <SpaceItem>
-                    <span>选取主色：</span>
-                </SpaceItem>
-                <SpaceItem>
-                    <input type="color" @bind-value="@color1" />
-                </SpaceItem>
-            </Space>
-        </SpaceItem>
-        <SpaceItem>
-            <Space Direction="DirectionVHType.Horizontal" Align="center">
-                <SpaceItem>
-                    <span>选取副色：</span>
-                </SpaceItem>
-                <SpaceItem>
-                    <input type="color" @bind-value="@color2" />
-                </SpaceItem>
-            </Space>
-        </SpaceItem>
-        <SpaceItem>
-            <Space Direction="DirectionVHType.Horizontal" Align="center">
-                <SpaceItem>
-                    <span>选取背景：</span>
-                </SpaceItem>
-                <SpaceItem>
-                    <input type="color" @bind-value="@backgroundcolor" />
-                </SpaceItem>
-            </Space>
-        </SpaceItem>
-    </Space>
+   <Descriptions Style="margin-top:20px;width:680px" Title="参数配置" Bordered Column="3">
+        <DescriptionsItem Title="主色："><input type="color" @bind-value="@color1" /></DescriptionsItem>
+        <DescriptionsItem Title="副色："> <input type="color" @bind-value="@color2" /></DescriptionsItem>
+        <DescriptionsItem Title="背景色："> <input type="color" @bind-value="@backgroundcolor" /></DescriptionsItem>
+    </Descriptions>
 </div>
 
 

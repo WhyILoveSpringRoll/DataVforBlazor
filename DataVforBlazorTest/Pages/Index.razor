@@ -1,7 +1,10 @@
 ﻿@page "/"
 @using DataVforBlazor
 @using DataVforBlazorTest.Pages.ExampleComponents.BoderBox
-<PageTitle>Index</PageTitle>
+@using System.ComponentModel
+@using AntDesign.TableModels
+
+<PageTitle>BoderBox</PageTitle>
 
 <DVBox1></DVBox1>
 <DVBox2></DVBox2>
@@ -17,4 +20,82 @@
 <DVBox12></DVBox12>
 <DVBox13></DVBox13>
 
+<Title Level="4" Id="api">API</Title>
+<div style="width:760px;margin-bottom:50px;">
+    <Table HidePagination TItem="Data" DataSource="@data">
+        <Column @bind-Field="@context.Param">
+            <a>@context.Param</a>
+        </Column>
+        <Column @bind-Field="@context.Info"></Column>
+        <Column @bind-Field="@context.Type">
+            <span style="color:#c41d7f">@context.Type</span>
+        </Column>
+        <Column @bind-Field="@context.DefaultValue"></Column>
+    </Table>
+</div>
 
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "Width",
+            Info = "组件的宽度（像素（支持）、百分比（暂不支持））,值小于0时代表自适应宽度",
+            Type = "int",
+            DefaultValue = "0",
+        },
+         new()
+        {
+            Param = "Height",
+            Info = "组件的高度（像素（支持）、百分比（暂不支持））,值小于0时代表自适应高度",
+            Type = "int",
+            DefaultValue = "0",
+        },
+        new()
+        {
+            Param = "BackgroundColor",
+            Info = "组件的背景颜色，#fff、red、rgba(128,128,128,0.5)",
+            Type = "int",
+            DefaultValue = "transparent",
+        },
+         new()
+        {
+            Param = "MergedColor",
+            Info = "组件的构成颜色，#fff、red、rgba(128,128,128,0.5)",
+            Type = "List<string>",
+            DefaultValue = "new List<string>{\"#4fd2dd\",\"#235fa7\"}",
+        },
+        new()
+        {
+            Param = "Reverse",
+            Info = "是否反转组件",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+         new()
+        {
+            Param = "Dur",
+            Info = "组件动画周期（秒）",
+            Type = "double",
+            DefaultValue = "3",
+        }
+
+    };
+
+    public class Data
+    {
+        [DisplayName("参数")]
+        public string Param { get; set; }
+
+        [DisplayName("说明")]
+        public string Info { get; set; }
+
+        [DisplayName("类型")]
+        public string Type { get; set; }
+
+        [DisplayName("默认值")]
+        public string DefaultValue { get; set; }
+    }
+
+
+}
