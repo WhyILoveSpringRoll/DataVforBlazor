@@ -1,0 +1,54 @@
+﻿
+<div style="margin-bottom:35px;">
+    <Title Level="3" Style="color:black">@componentName</Title>
+    <div style="width:680px;height:240px;background-color:black;padding:45px;">
+        <Dv_border_box_3 MergedColor="@(new List<string>{color1,color2})" BackgroundColor="@backgroundcolor">
+            <Title Level="4" Style="color:#46bd87">@componentName</Title>
+        </Dv_border_box_3>
+    </div>
+    <div style="width:680px;height:63px;border-radius:6px;background-color:black;margin-top:20px;padding-left:20px;line-height:63px">
+        <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#b4009e;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@(">Dv_border_box<")</span><span style="color:#b4009e;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@("/>")</span>
+    </div>
+    <Space Style="margin-top:20px" Direction="DirectionVHType.Vertical">
+        <SpaceItem>
+            <Space Direction="DirectionVHType.Horizontal" Align="center">
+                <SpaceItem>
+                    <span>选取主色：</span>
+                </SpaceItem>
+                <SpaceItem>
+                    <input type="color" @bind-value="@color1" />
+                </SpaceItem>
+            </Space>
+        </SpaceItem>
+        <SpaceItem>
+            <Space Direction="DirectionVHType.Horizontal" Align="center">
+                <SpaceItem>
+                    <span>选取副色：</span>
+                </SpaceItem>
+                <SpaceItem>
+                    <input type="color" @bind-value="@color2" />
+                </SpaceItem>
+            </Space>
+        </SpaceItem>
+        <SpaceItem>
+            <Space Direction="DirectionVHType.Horizontal" Align="center">
+                <SpaceItem>
+                    <span>选取背景：</span>
+                </SpaceItem>
+                <SpaceItem>
+                    <input type="color" @bind-value="@backgroundcolor" />
+                </SpaceItem>
+            </Space>
+        </SpaceItem>
+    </Space>
+</div>
+
+
+@code
+{
+    string componentName = "Dv_border_box_3";
+    string color1 = "#2862b7";
+    string color2 = "#2862b7";
+    string backgroundcolor = "transparent";
+
+}

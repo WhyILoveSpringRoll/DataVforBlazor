@@ -1,41 +1,20 @@
 ﻿@page "/"
 @using DataVforBlazor
+@using DataVforBlazorTest.Pages.ExampleComponents.BoderBox
 <PageTitle>Index</PageTitle>
 
+<DVBox1></DVBox1>
+<DVBox2></DVBox2>
+<DVBox3></DVBox3>
+<DVBox4></DVBox4>
+<DVBox5></DVBox5>
+<DVBox6></DVBox6>
+<DVBox7></DVBox7>
+<DVBox8></DVBox8>
+<DVBox9></DVBox9>
+<DVBox10></DVBox10>
+<DVBox11></DVBox11>
+<DVBox12></DVBox12>
+<DVBox13></DVBox13>
 
 
-
-<div style="background-color:black;padding:15px;margin:15px">
-  <Dv_border_box_13>
-        <Title Level="4" Style="color:#46bd87">Dv_border_box</Title>
-  </Dv_border_box_13>
-</div>
-
-<div  style="background-color:black;padding:15px;margin:15px">
-  <Dv_border_box_13>
-    <CardTest></CardTest>
-  </Dv_border_box_13>
-</div>
-
-<div style="background-color:black;padding:15px;margin:15px">
-    <Dv_border_box_13>
-        <TableTest></TableTest>
-    </Dv_border_box_13>
-</div>
-
-
-<Input @bind-Value="@width" />
-<Input @bind-Value="@height" />
-<input type="color" @bind-value="@color1"/>
-<input type="color" @bind-value="@color2" />
-<input type="color" @bind-value="@backgroundcolor" />
-@code
-{
-    int width = 0;
-    int height = 0;
-    string color1 = "#4fd2dd";
-    string color2 = "#235fa7";
-    string backgroundcolor = "transparent";
-    //string backgroundcolor = "yellow";
-   
-}
