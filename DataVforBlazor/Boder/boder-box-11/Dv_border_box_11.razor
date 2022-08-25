@@ -1,7 +1,7 @@
 ﻿@namespace DataVforBlazor
 @inherits BoderBase
 
-<div id="@ID" class="dv-border-box-11" style="box-shadow: inset 0 0 25px 3px @MergedColor[0];width:@width;height:@height;">
+<div id="@ID" class="dv-border-box-11" style="width:@width;height:@height;">
     <svg class="dv-border-svg-container" style="width:@width;height:@height;">
         <defs>
             <filter id="@filterId" height="150%" width="150%" x="-25%" y="-25%">
@@ -54,7 +54,7 @@
         " />
 
         <polygon stroke="@MergedColor[0]"
-                 fill="fade(@MergedColor[1] || @MergedColor[0], 30)"
+                 fill="fade(@MergedColor[1] || @MergedColor[1], 30)"
                  filter="url(#@(filterId)"
                  points="
          @((Width + TitleWidth) / 2 - 11), 37 @((Width + TitleWidth) / 2 - 32), 11
@@ -174,7 +174,9 @@
 
 
     <div class="border-box-content">
-        @ChildContent
+        <div class="border-box-inside">
+            @ChildContent
+        </div>
     </div>
 </div>
 

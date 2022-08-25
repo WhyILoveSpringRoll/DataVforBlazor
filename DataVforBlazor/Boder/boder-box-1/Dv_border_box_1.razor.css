@@ -1,6 +1,6 @@
 ﻿.dv-border-box-1 {
     position: relative;
-   /* display: inline-block;*/
+ /*   display: inline-block;*/
     min-height: 150px;
     min-width: 200px;
 }
@@ -32,16 +32,18 @@
         position: relative;
         Width: 100%;
         Height: 100%;
+        display: flex;
+        min-height: 150px;
+        min-width: 200px;
+        justify-content: center;
+        align-items: center;
+       
     }
+        .dv-border-box-1 .border-box-content .border-box-inside {
+           
+            margin-top: 15px;
+            margin-bottom: 15px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
 
-.border-box-content {
-    display: flex;
-    min-height:150px;
-    min-width:200px;
-    justify-content: center;
-    align-items: center;
-    padding-top:2%;
-    padding-bottom:2%;
-    padding-left:3%;
-    padding-right:6%;
-}

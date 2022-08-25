@@ -1,11 +1,10 @@
-﻿.dv-border-box-2 {
+﻿.dv-border-box-12 {
     position: relative;
-    display: inline-block;
     width: 100%;
     height: 100%;
 }
 
-    .dv-border-box-2 .dv-border-svg-container {
+    .dv-border-box-12 .dv-border-svg-container {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -13,12 +12,7 @@
         left: 0px;
     }
 
-        .dv-border-box-2 .dv-border-svg-container > polyline {
-            fill: none;
-            stroke-width: 1;
-        }
-
-    .dv-border-box-2 .border-box-content {
+    .dv-border-box-12 .border-box-content {
         position: relative;
         width: 100%;
         height: 100%;
@@ -28,7 +22,8 @@
         justify-content: center;
         align-items: center;
     }
-        .dv-border-box-2 .border-box-content .border-box-inside {
+
+        .dv-border-box-12 .border-box-content .border-box-inside {
             margin-top: 15px;
             margin-bottom: 15px;
             margin-left: 20px;

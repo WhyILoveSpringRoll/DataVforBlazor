@@ -11,21 +11,17 @@ using System.Threading.Tasks;
 
 namespace DataVforBlazor
 {
-    public partial class Dv_border_box_11 : BoderBase
+    public partial class Dv_border_box_12:BoderBase
     {
         [Parameter]
-        public override List<string> MergedColor { get; set; } = new List<string> { "#8aaafb", "#1f33a2" };
-        [Parameter]
-        public string Title { get; set; } = "Title";
-        [Parameter]
-        public int TitleWidth { get; set; } =250;
+        public override List<string> MergedColor { get; set; } = new List<string> { "#2e6099", "#7ce7fd" };
 
         private string id = Guid.NewGuid().ToString("N");
         private string filterId = "";
 
         protected override Task OnInitializedAsync()
         {
-            filterId = $"border-box-11-filterId-{id}";
+            filterId = $"border-box-12-filterId-{id}";
             return base.OnInitializedAsync();
         }
     }

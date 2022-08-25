@@ -30,19 +30,16 @@
         position: relative;
         width: 100%;
         height: 100%;
+        display: flex;
+        min-height: 150px;
+        min-width: 200px;
+        justify-content: center;
+        align-items: center;
     }
 
-
-
-
-.border-box-content {
-    display: flex;
-    min-height: 150px;
-    min-width: 200px;
-    justify-content: center;
-    align-items: center;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 3%;
-    padding-right: 6%;
-}
+        .dv-border-box-10 .border-box-content .border-box-inside {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
