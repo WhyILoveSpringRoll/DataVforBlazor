@@ -13,7 +13,6 @@ namespace DataVforBlazor
 
         private int rowNum = 4;
         private int rowPoints = 20;
-        private List<int> svgWH = new List<int> { 200, 50 };
         private List<int> svgScale = new List<int> { 1, 1 };
         private double pointSideLength = 2.5;
         private double halfPointSideLength = 1.25;
@@ -35,13 +34,13 @@ namespace DataVforBlazor
         private void CalcPointsPosition()
         {
             points.Clear();
-            var horizontalGap = svgWH[0] / (rowPoints + 1);
-            var verticalGap = svgWH[1] / (rowNum + 1);
+            var horizontalGap = Width / (rowPoints + 1);
+            var verticalGap = Height / (rowNum + 1);
             for(int i=1;i<=rowNum;i++)
             {
                 for(int j=1;j<=rowPoints;j++)
                 {
-                    points.Add(new Point(horizontalGap * i, verticalGap * j));
+                    points.Add(new Point(horizontalGap * j, verticalGap * i));
                 }
             }
         }
