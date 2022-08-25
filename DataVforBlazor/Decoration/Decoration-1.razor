@@ -1,8 +1,8 @@
 ﻿@namespace DataVforBlazor
 @inherits DecorationBase
 
-<div id="@ID" class="dv-decoration-1" style="height:@(Height)px;width:@(Width)px">
-    <svg style="transform:scale(@svgScale[0],@svgScale[1]);height:@(Height)px;width:@(Width)px">
+<div id="@ID" class="dv-decoration-1" style="height:@height;width:@width">
+    <svg class="dv-border-svg-container" style="transform:scale(@svgScale[0],@svgScale[1]);height:@height;width:@width">
 
         @foreach (var point in points)
         {

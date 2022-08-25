@@ -39,7 +39,6 @@ namespace DataVforBlazor
             {
                 Height = int.Parse((await module.InvokeAsync<object>("GetHeight", ID)).ToString());
             }
-
             height = Height <= 0 ? "" : Height + "px";
             width = Width <= 0 ? "" : Width + "px";
         }

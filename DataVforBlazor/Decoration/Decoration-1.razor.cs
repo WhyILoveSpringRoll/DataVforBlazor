@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Components;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,9 +11,10 @@ namespace DataVforBlazor
     public partial class Decoration_1:DecorationBase
     {
         public override List<string> MergedColor { get; set; } = new List<string> { "#fff", "#0de7c2" };
-
-        private int rowNum = 4;
-        private int rowPoints = 20;
+        [Parameter]
+        public int RowNum { get; set; } = 8;
+        [Parameter]
+        public int RowPoints { get; set; } = 40;
         private List<int> svgScale = new List<int> { 1, 1 };
         private double pointSideLength = 2.5;
         private double halfPointSideLength = 1.25;
@@ -21,10 +23,10 @@ namespace DataVforBlazor
         private Random rd = new Random(Guid.NewGuid().GetHashCode());
 
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
+            await base.OnParametersSetAsync();
             CalcSVGData();
-            return base.OnInitializedAsync();
         }
         private void CalcSVGData()
         {
@@ -34,11 +36,11 @@ namespace DataVforBlazor
         private void CalcPointsPosition()
         {
             points.Clear();
-            var horizontalGap = Width / (rowPoints + 1);
-            var verticalGap = Height / (rowNum + 1);
-            for(int i=1;i<=rowNum;i++)
+            var horizontalGap = Width / (RowPoints + 1);
+            var verticalGap = Height / (RowNum + 1);
+            for(int i=1;i<=RowNum;i++)
             {
-                for(int j=1;j<=rowPoints;j++)
+                for(int j=1;j<=RowPoints;j++)
                 {
                     points.Add(new Point(horizontalGap * j, verticalGap * i));
                 }
@@ -46,8 +48,8 @@ namespace DataVforBlazor
         }
         private void CalcRectsPosition()
         {
-            Point p1 = points[rowPoints * 2 - 1];
-            Point p2 = points[rowPoints * 2 - 3];
+            Point p1 = points[RowPoints * 2 - 1];
+            Point p2 = points[RowPoints * 2 - 3];
             rects = new Point[] { p1, p2 };
         }
     }
