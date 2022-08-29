@@ -1,0 +1,18 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-4" style="height:@height;width:@width">
+    <div class="container @(Reverse ? "reverse" : "normal")"
+         style="@(Reverse ? $"width:{width};height:5px;animation-duration:{Dur}s":$"width:5px;height:{height};animation-duration:{Dur}s")">
+        <svg class="dv-decoration-svg-container" width="@(Reverse ? Width : 5)" height="@(Reverse ? 5 : Height)">
+            <polyline stroke="@MergedColor[0]"
+                      points="@(Reverse?$"0, 2.5 {Width} 2.5":$"2.5, 0 2.5, {Height}")"/>
+            <polyline class="bold-line"
+                      stroke="@MergedColor[1]"
+                      stroke-width="3"
+                      stroke-dasharray="20, 80"
+                      stroke-dashoffset="-30"
+                      points="@(Reverse?$"0, 2.5 {Width}, 2.5 ":$"2.5, 0 2.5, {Height}")"/>
+        </svg>
+    </div>
+</div>

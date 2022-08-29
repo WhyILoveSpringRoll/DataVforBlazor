@@ -1,14 +1,14 @@
-﻿.dv-decoration-1 {
+﻿.dv-decoration-6 {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-    .dv-decoration-1 .dv-border-svg-container {
+    .dv-decoration-6 .dv-decoration-svg-container {
         position: absolute;
         display: block;
     }
 
-    .dv-decoration-1 svg {
+    .dv-decoration-6 svg {
         transform-origin: left top;
     }

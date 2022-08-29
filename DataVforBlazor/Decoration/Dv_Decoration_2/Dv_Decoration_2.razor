@@ -1,0 +1,28 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-2" style="height:@height;width:@width">
+    <svg class="dv-decoration-svg-container" style="height:@height;width:@width">
+        <rect x="@x" y="@y" width="@w" height="@h" fill="@MergedColor[0]">
+            <animate attributeName="@(Reverse ? "height" : "width")"
+                     from="0"
+                     to="@(Reverse ? Height : Width)"
+                     dur="@(Dur)s"
+                     calcMode="spline"
+                     keyTimes="0;1"
+                     keySplines=".42,0,.58,1"
+                     repeatCount="indefinite" />
+        </rect>
+
+        <rect x="@x" y="@y" width="1" height="1" fill="@MergedColor[1]">
+            <animate attributeName="@(Reverse ? "y" : "x")"
+                     from="0"
+                     to="@(Reverse ? Height : Width)"
+                     dur="@(Dur)s"
+                     calcMode="spline"
+                     keyTimes="0;1"
+                     keySplines="0.42,0,0.58,1"
+                     repeatCount="indefinite" />
+        </rect>
+    </svg>
+</div>

@@ -1,0 +1,46 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-1" style="height:@height;width:@width">
+    <svg class="dv-decoration-svg-container" style="height:@height;width:@width">
+        <polyline fill="transparent"
+                  stroke="@MergedColor[0]"
+                  stroke-width="3"
+                  points="@line1Points">
+            <animate attributeName="stroke-dasharray"
+                     attributeType="XML"
+                     from="0, @(line1Length/2), 0, @(line1Length/2)"
+                     to="0, 0, @line1Length, 0"
+                     dur="@(Dur)s"
+                     begin="0s"
+                     calcMode="spline"
+                     keyTimes="0;1"
+                     keySplines="0.4,1,0.49,0.98"
+                     repeatCount="indefinite" />
+        </polyline>
+        <polyline fill="transparent"
+                  stroke="@MergedColor[1]"
+                  stroke-width="2"
+                  points="@line2Points">
+            <animate attributeName="stroke-dasharray"
+                     attributeType="XML"
+                     from="0, @(line2Length/2), 0, @(line2Length/2)"
+                     to="0, 0, @line2Length, 0"
+                     dur="@(Dur)s"
+                     begin="0s"
+                     calcMode="spline"
+                     keyTimes="0;1"
+                     keySplines=".4,1,.49,.98"
+                     repeatCount="indefinite" />
+        </polyline>
+        <text class="dv-decoration-title"
+              x="@(Width / 2)"
+              y="@(Height/2-10)"
+              fill="#fff"
+              font-size="18"
+              text-anchor="middle"
+              dominant-baseline="middle">
+            @Title
+        </text>
+    </svg>
+</div>

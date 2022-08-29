@@ -1,0 +1,38 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-6" style="height:@height;width:@width">
+    <svg class="dv-decoration-svg-container" style="transform:scale(@svgScale[0],@svgScale[1]);height:@height;width:@width">
+
+
+        @foreach (var point in points)
+       {
+            var index = points.IndexOf(point);
+
+            <rect key="@point.GetHashCode()"
+              fill="@(rd.NextDouble()>0.5?MergedColor[0]:MergedColor[1])"
+              x="@(point.X - halfRectWidth)"
+              y="@(point.Y - heights[index] / 2)"
+              width="@rectWidth"
+              height="@heights[index]">
+                <animate attributeName="y"
+                     values="@(point.Y - minHeights[index] / 2);@(point.Y - heights[index] / 2);@(point.Y - minHeights[index] / 2)"
+                     dur="@(randoms[index])s"
+                     keyTimes="0;0.5;1"
+                     calcMode="spline"
+                     keySplines="0.42,0,0.58,1;0.42,0,0.58,1"
+                     begin="0s"
+                     repeatCount="indefinite" />
+
+                <animate attributeName="height"
+                     values="@(minHeights[index]);@(heights[index]);@(minHeights[index])"
+                     dur="@(randoms[index])s"
+                     keyTimes="0;0.5;1"
+                     calcMode="spline"
+                     keySplines="0.42,0,0.58,1;0.42,0,0.58,1"
+                     begin="0s"
+                     repeatCount="indefinite" />
+            </rect>
+        }
+    </svg>
+</div>
