@@ -1,0 +1,37 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-11" style="height:@height;width:@width">
+    <svg style="height:@height;width:@width">
+        <polygon fill="@(ToRgba(MergedColor[1], 0.1))"
+                 stroke="@MergedColor[1]"
+                 points="20 10, 25 4, 55 4 60 10" />
+
+        <polygon fill="@(ToRgba(MergedColor[1], 0.1))"
+                 stroke="@MergedColor[1]"
+                 points="20 @(Height - 10), 25 @(Height - 4), 55 @(Height - 4) 60 @(Height - 10)" />
+
+        <polygon fill="@(ToRgba(MergedColor[1], 0.1))"
+                 stroke="@MergedColor[1]"
+                 points="@(Width - 20) 10, @(Width - 25) 4, @(Width - 55) 4 @(Width - 60) 10" />
+
+        <polygon fill="@(ToRgba(MergedColor[1], 0.1))"
+                 stroke="@MergedColor[1]"
+                 points="@(Width - 20) @(Height - 10), @(Width - 25) @(Height - 4), @(Width - 55) @(Height - 4) @(Width - 60) @(Height - 10)" />
+
+        <polygon fill="@(ToRgba(MergedColor[0], 0.2))"
+                 stroke="@MergedColor[0]"
+                 points=" 20 10, 5 @(Height / 2) 20 @(Height - 10) @(Width - 20) @(Height - 10) @(Width - 5) @(Height / 2) @(Width - 20) 10" />
+
+        <polyline fill="transparent"
+                  stroke="@(ToRgba(MergedColor[0], 0.7))"
+                  points="25 18, 15 @(Height / 2) 25 @(Height - 18)" />
+
+        <polyline fill="transparent"
+                  stroke="@(ToRgba(MergedColor[0], 0.7))"
+                  points="@(Width - 25) 18, @(Width - 15) @(Height / 2) @(Width - 25) @(Height - 18)" />
+    </svg>
+    <div class="decoration-content">
+        @ChildContent
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-8" style="height:@height;width:@width">
+    <svg class="dv-decoration-svg-container" style="height:@height;width:@width">
+        <polyline stroke="@MergedColor[0]"
+                  stroke-width="2"
+                  fill="transparent"
+                  points="@(XPos(0)), 0 @(XPos(30)), @(Height / 2)" />
+
+        <polyline stroke="@MergedColor[0]"
+                  stroke-width="2"
+                  fill="transparent"
+                  points="@(XPos(20)), 0 @(XPos(50)), @(Height / 2) @(XPos(Width)), @(Height / 2)" />
+
+        <polyline stroke="@MergedColor[1]"
+                  fill="transparent"
+                  stroke-width="3"
+                  points="@(XPos(0)), @(Height - 3), @(XPos(200)), @(Height - 3)" />
+    </svg>
+</div>

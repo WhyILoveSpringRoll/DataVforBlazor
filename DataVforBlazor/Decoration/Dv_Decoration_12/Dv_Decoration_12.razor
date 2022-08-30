@@ -1,0 +1,92 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-12" style="height:@height;width:@width">
+    <svg class="dv-decoration-svg-container" style="height:@height;width:@width">
+        <defs>
+            <g id="@gId">
+                @foreach (var d in pathD)
+                {
+                    var index = pathD.IndexOf(d);
+                    <path stroke="@pathColor[index]"
+                      stroke-width="@(Width / 2)"
+                      fill="transparent"
+                      key="@d.GetHashCode()"
+                      d="@d" />
+                }
+            </g>
+
+            <radialGradient id="@gradientId"
+                            cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="transparent" stop-opacity="1" />
+                <stop offset="100%" stop-color="@ToRgba(MergedColor[1],30)" stop-opacity="1" />
+            </radialGradient>
+        </defs>
+
+
+
+        @foreach (var r in circleR)
+        {
+            <circle key="@r.GetHashCode()"
+                r="@r"
+                cx="@GetX()"
+                cy="@GetY()"
+                stroke="@MergedColor[1]"
+                stroke-width="0.5"
+                fill="transparent" />
+        }
+        <circle r="1"
+                cx="@GetX()"
+                cy="@GetY()"
+                stroke="transparent"
+                fill="url(#@gradientId)">
+            <animate attributeName="r"
+                     values="1;@(Width / 2)"
+                     dur="@(HaloDur)s"
+                     repeatCount="indefinite" />
+            <animate attributeName="opacity"
+                     values="1;0"
+                     dur="@(HaloDur)s"
+                     repeatCount="indefinite" />
+        </circle>
+
+        <circle r="2"
+                cx="@GetX()"
+                cy="@GetY()"
+                fill="@MergedColor[1]" />
+
+        @if (showSplitLine)
+        {
+            <g>
+                @foreach (var p in splitLinePoints)
+                {
+                    <polyline key="@p.GetHashCode()"
+                      points="@p"
+                      stroke="@MergedColor[1]"
+                      stroke-width="0.5"
+                      opacity="0.5" />
+                }
+            </g>
+        }
+
+        @foreach (var d in arcD)
+        {
+            <path key="@d.GetHashCode()"
+              d="@d"
+              stroke="@MergedColor[1]"
+              stroke-width="2"
+              fill="transparent" />
+        }
+
+        <use href="#@gId">
+            <animateTransform attributeName="transform"
+                              type="rotate"
+                              values="0, @GetX() @GetY();360, @GetX() @GetY()"
+                              dur="@(ScanDur)s"
+                              repeatCount="indefinite" />
+        </use>
+    </svg>
+    <div class="decoration-content">
+        @ChildContent
+    </div>
+</div>

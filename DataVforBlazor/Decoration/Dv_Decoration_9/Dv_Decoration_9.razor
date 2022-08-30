@@ -1,0 +1,75 @@
+﻿@namespace DataVforBlazor
+@inherits DecorationBase
+
+<div id="@ID" class="dv-decoration-9" style="height:@height;width:@width">
+    <svg class="dv-decoration-svg-container" style="transform:scale(@svgScale[0],@svgScale[1]);height:@height;width:@width">
+        <defs>
+            <polygon id="@polygonId" points="15, 46.5, 21, 47.5, 21, 52.5, 15, 53.5" />
+        </defs>
+
+        <circle cx="50"
+                cy="50"
+                r="45"
+                fill="transparent"
+                stroke="@MergedColor[1]"
+                stroke-width="10"
+                stroke-dasharray="80, 100, 30, 100">
+            <animateTransform attributeName="transform"
+                              type="rotate"
+                              values="0 50 50;360 50 50"
+                              dur="@(Dur)s"
+                              repeatCount="indefinite" />
+        </circle>
+
+        <circle cx="50"
+                cy="50"
+                r="45"
+                fill="transparent"
+                stroke="@MergedColor[0]"
+                stroke-width="6"
+                stroke-dasharray="50, 66, 100, 66">
+            <animateTransform attributeName="transform"
+                              type="rotate"
+                              values="0 50 50;-360 50 50"
+                              dur="@(Dur)s"
+                              repeatCount="indefinite" />
+        </circle>
+
+        <circle cx="50"
+                cy="50"
+                r="38"
+                fill="transparent"
+                stroke="@ToRgba(MergedColor[1],0.3)"
+                stroke-width="1"
+                stroke-dasharray="5, 1" />
+
+        @for (int i = 0; i < 20; i++)
+        {
+            <use 
+             key="@i.GetHashCode()"
+             href="#@polygonId"
+             stroke="@MergedColor[1]"
+             fill="@(rd.NextDouble()>0.4?"transparent":MergedColor[0])">
+                <animateTransform attributeName="transform"
+                              type="rotate"
+                              values="0 50 50;360 50 50"
+                              dur="@(Dur)s"
+                              begin="@(i*Dur/20)s"
+                              repeatCount="indefinite" />
+            </use>
+        }
+
+       
+
+        <circle cx="50"
+                cy="50"
+                r="26"
+                fill="transparent"
+                stroke="@ToRgba(MergedColor[1],30)"
+                stroke-width="1"
+                stroke-dasharray="5, 1" />
+    </svg>
+    <div class="decoration-content">
+        @ChildContent
+    </div>
+</div>
