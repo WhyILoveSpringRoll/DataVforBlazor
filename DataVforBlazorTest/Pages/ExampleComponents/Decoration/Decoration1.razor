@@ -1,10 +1,11 @@
-﻿
+﻿@using DataVforBlazorTest.Pages.ExampleComponents.Decoration
 <div style="margin-bottom:55px;">
     <Title Level="3" Style="color:black">@componentName</Title>
     <div style="width:680px;height:240px;background-color:#282c34;padding:45px;">
-        <Dv_border_box_6 MergedColor="@(new List<string>{color1,color2})" BackgroundColor="@backgroundcolor">
+        <Dv_Decoration_1
+            MergedColor="@(new List<string>{color1,color2})">
             <Title Level="4" Style="color:#46bd87">@componentName</Title>
-        </Dv_border_box_6>
+        </Dv_Decoration_1>
     </div>
     <div style="width:680px;height:63px;border-radius:6px;background-color:#282c34;margin-top:20px;padding-left:20px;line-height:63px">
         <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@(">Dv_border_box<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@("/>")</span>
@@ -12,16 +13,15 @@
    <Descriptions Style="margin-top:20px;width:680px" Title="参数配置" Bordered Column="3">
         <DescriptionsItem Title="主色："><input type="color" @bind-value="@color1" /></DescriptionsItem>
         <DescriptionsItem Title="副色："> <input type="color" @bind-value="@color2" /></DescriptionsItem>
-        <DescriptionsItem Title="背景色："> <input type="color" @bind-value="@backgroundcolor" /></DescriptionsItem>
-    </Descriptions>
+      
+   </Descriptions>
 </div>
 
 
 @code
 {
-    string componentName = "Dv_border_box_6";
-    string color1 = "rgba(255, 255, 255, 0.35)";
-    string color2 = "gray";
-    string backgroundcolor = "transparent";
+    string componentName = "Dv_decoration_1";
+    string color1 = "#fff";
+    string color2 = "#0de7c2";
 
 }
