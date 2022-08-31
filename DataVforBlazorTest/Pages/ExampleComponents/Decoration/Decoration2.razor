@@ -1,0 +1,36 @@
+﻿@using DataVforBlazorTest.Pages.ExampleComponents.Decoration
+<div style="margin-bottom:55px;">
+    <Title Level="3" Style="color:black">@componentName</Title>
+    <div style="width:680px;height:240px;background-color:#282c34;padding:45px;display:flex;justify-content:center;align-items:center">
+        <Dv_Decoration_2 Dur="dur" Reverse="reverse"
+            MergedColor="@(new List<string>{color1,color2})">
+            <Title Level="4" Style="color:#46bd87">@componentName</Title>
+        </Dv_Decoration_2>
+    </div>
+    <div style="width:680px;height:63px;border-radius:6px;background-color:#282c34;margin-top:20px;padding-left:20px;line-height:63px">
+        <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName
+            @if (reverse)
+            {
+                <span style="color:#e750e7;font-size:0.85rem"> Reverse</span>
+            }
+        </span><span style="color:white;font-size:0.85rem">@("/>")</span>
+    </div>
+   <Descriptions Style="margin-top:20px;width:680px" Title="参数配置" Bordered Column="3">
+        <DescriptionsItem Title="主色："><input type="color" @bind-value="@color1" /></DescriptionsItem>
+        <DescriptionsItem Title="副色："> <input type="color" @bind-value="@color2" /></DescriptionsItem>
+        <DescriptionsItem Title="选则方向："> <Switch @bind-Checked="reverse" CheckedChildren="反向" UnCheckedChildren="正向" /></DescriptionsItem>
+        <DescriptionsItem Title="运动速度："> <div style="width:300px"><Slider @bind-Value="dur" TValue="double" Step="0.1" DefaultValue="3" Min="0.1" Max="10" /></div></DescriptionsItem>
+        </Descriptions>
+</div>
+
+
+@code
+{
+    bool reverse = false;
+    string componentName = "Dv_Decoration_2";
+    string color1 = "#3faacb";
+    string color2 = "#fff";
+    double dur = 6;
+
+    
+}

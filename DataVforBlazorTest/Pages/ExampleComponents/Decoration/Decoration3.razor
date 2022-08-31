@@ -2,10 +2,10 @@
 <div style="margin-bottom:55px;">
     <Title Level="3" Style="color:black">@componentName</Title>
     <div style="width:680px;height:240px;background-color:#282c34;padding:45px;display:flex;justify-content:center;align-items:center">
-        <Dv_Decoration_1 RowNum="rowNum" RowPoints="rowPoints"
+        <Dv_Decoration_3 RowNum="rowNum" RowPoints="rowPoints" Width="rowPoints*10" Height="15*rowNum"
             MergedColor="@(new List<string>{color1,color2})">
             <Title Level="4" Style="color:#46bd87">@componentName</Title>
-        </Dv_Decoration_1>
+        </Dv_Decoration_3>
     </div>
     <div style="width:680px;height:63px;border-radius:6px;background-color:#282c34;margin-top:20px;padding-left:20px;line-height:63px">
         <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@("/>")</span>
@@ -21,10 +21,10 @@
 
 @code
 {
-    string componentName = "Dv_Decoration_1";
-    string color1 = "#fff";
-    string color2 = "#0de7c2";
-    int rowNum=4;
-    int rowPoints = 20;
+    string componentName = "Dv_Decoration_3";
+    string color1 = "#7acaec";
+    string color2 = "transparent";
+    int rowNum=2;
+    int rowPoints = 25;
     
 }
