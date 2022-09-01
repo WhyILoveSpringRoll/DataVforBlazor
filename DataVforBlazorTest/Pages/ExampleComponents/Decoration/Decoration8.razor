@@ -2,29 +2,31 @@
 <div style="margin-bottom:55px;">
     <Title Level="3" Style="color:black">@componentName</Title>
     <div style="width:680px;height:240px;background-color:#282c34;padding:45px;display:flex;justify-content:center;align-items:center">
-        <Dv_Decoration_1 RowNum="rowNum" RowPoints="rowPoints"
+        <Dv_Decoration_8 Width="300" Height="50" Reverse="reverse"
             MergedColor="@(new List<string>{color1,color2})">
-            <span style="color:#46bd87;font-size:20px">@componentName</span>
-        </Dv_Decoration_1>
+            <Title Level="4" Style="color:#46bd87">@componentName</Title>
+        </Dv_Decoration_8>
     </div>
     <div style="width:680px;height:63px;border-radius:6px;background-color:#282c34;margin-top:20px;padding-left:20px;line-height:63px">
-        <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName</span><span style="color:white;font-size:0.85rem">@("/>")</span>
+        <span style="color:white;font-size:0.85rem">@("<")</span><span style="color:#e750e7;font-size:0.85rem">@componentName
+            @if (reverse)
+            {
+                <span style="color:#e750e7;font-size:0.85rem"> Reverse</span>
+            }
+        </span><span style="color:white;font-size:0.85rem">@("/>")</span>
     </div>
    <Descriptions Style="margin-top:20px;width:680px" Title="参数配置" Bordered Column="3">
         <DescriptionsItem Title="主色："><input type="color" @bind-value="@color1" /></DescriptionsItem>
         <DescriptionsItem Title="副色："> <input type="color" @bind-value="@color2" /></DescriptionsItem>
-        <DescriptionsItem Title="行数："> <AntDesign.InputNumber @bind-Value="rowNum" Min="2" Max="10" ></AntDesign.InputNumber></DescriptionsItem>
-        <DescriptionsItem Title="数量："> <AntDesign.InputNumber @bind-Value="rowPoints" Min="2" Max="40"></AntDesign.InputNumber></DescriptionsItem>
-   </Descriptions>
+        <DescriptionsItem Title="选则方向："> <Switch @bind-Checked="reverse" CheckedChildren="反向" UnCheckedChildren="正向" /></DescriptionsItem>
+        </Descriptions>
 </div>
 
 
 @code
 {
-    string componentName = "Dv_Decoration_1";
-    string color1 = "#fff";
-    string color2 = "#0de7c2";
-    int rowNum=4;
-    int rowPoints = 20;
-    
+    bool reverse = false;
+    string componentName = "Dv_Decoration8";
+    string color1 = "#3f96a5";
+    string color2 = "#3f96a5";
 }
