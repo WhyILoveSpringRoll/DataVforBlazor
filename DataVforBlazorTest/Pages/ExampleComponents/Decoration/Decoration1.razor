@@ -2,8 +2,8 @@
 <div style="margin-bottom:55px;">
     <Title Level="3" Style="color:black">@componentName</Title>
     <div style="width:680px;height:240px;background-color:#282c34;padding:45px;display:flex;justify-content:center;align-items:center">
-        <Dv_Decoration_1 RowNum="rowNum" RowPoints="rowPoints"
-            MergedColor="@(new List<string>{color1,color2})">
+        <Dv_Decoration_1 Width="rowPoints*10" Height="@((rowNum+1)*10)" RowNum="rowNum" RowPoints="rowPoints"
+                         MergedColor="@(new List<string>{color1,color2})">
             <span style="color:#46bd87;font-size:20px">@componentName</span>
         </Dv_Decoration_1>
     </div>

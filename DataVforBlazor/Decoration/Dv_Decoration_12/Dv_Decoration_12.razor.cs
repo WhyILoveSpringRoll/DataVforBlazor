@@ -40,13 +40,7 @@ namespace DataVforBlazor
             return base.OnInitializedAsync();
         }
 
-        private string ToRgba(string colorString, double percent)
-        {
-            if (colorString.StartsWith("rgb"))
-                return colorString;
-            var color = ColorTranslator.FromHtml(colorString);
-            return $"rgba({color.R},{color.G},{color.A},{percent})";
-        }
+       
 
         protected override async Task OnParametersSetAsync()
         {

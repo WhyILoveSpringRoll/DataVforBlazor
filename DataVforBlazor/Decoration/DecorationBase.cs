@@ -2,6 +2,7 @@
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,14 @@ namespace DataVforBlazor
             }
             height = Height <= 0 ? "" : Height + "px";
             width = Width <= 0 ? "" : Width + "px";
+        }
+
+        protected string ToRgba(string colorString, double percent)
+        {
+            if (colorString.StartsWith("rgb"))
+                return colorString;
+            var color = ColorTranslator.FromHtml(colorString);
+            return $"rgba({color.R},{color.G},{color.A},{percent})";
         }
     }
 }

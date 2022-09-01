@@ -13,14 +13,7 @@ namespace DataVforBlazor
     {
         public override List<string> MergedColor { get; set; } = new List<string> { "#1a98fc", "#2cf7fe" };
 
-        private string ToRgba(string colorString, double percent)
-        {
-            if (colorString.StartsWith("rgb"))
-                return colorString;
-
-            var color = ColorTranslator.FromHtml(colorString);
-            return $"rgba({color.R},{color.G},{color.A},{percent})";
-        }
+       
 
     }
 }
