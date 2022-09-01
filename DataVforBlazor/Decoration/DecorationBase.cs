@@ -49,7 +49,7 @@ namespace DataVforBlazor
             if (colorString.StartsWith("rgb"))
                 return colorString;
             var color = ColorTranslator.FromHtml(colorString);
-            return $"rgba({color.R},{color.G},{color.A},{percent})";
+            return $"rgba({color.R},{color.G},{color.B},{percent})";
         }
     }
 }
