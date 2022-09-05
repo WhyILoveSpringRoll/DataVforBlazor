@@ -70,7 +70,7 @@ namespace DataVforBlazor
             double startAngle = -Math.PI / 2.0;
             double angleGap = sectorAngle / segment;
             double r = Width / 4.0;
-            MyPoint lastEndPoint = GetCircleRadianPoint(GetX(), GetY(), r, startAngle);
+            DvPoint lastEndPoint = GetCircleRadianPoint(GetX(), GetY(), r, startAngle);
 
             pathD.Clear();
             for (int i = 0; i < segment; i++)
@@ -82,21 +82,10 @@ namespace DataVforBlazor
             }
         }
 
-        private MyPoint GetCircleRadianPoint(int x, int y, double radius, double radian)
+        private DvPoint GetCircleRadianPoint(int x, int y, double radius, double radian)
         {
-            return new MyPoint(x + Math.Cos(radian) * radius, y + Math.Sin(radian) * radius);
+            return new DvPoint(x + Math.Cos(radian) * radius, y + Math.Sin(radian) * radius);
         }
-        internal class MyPoint
-        {
-            internal double X;
-            internal double Y;
-            internal MyPoint(double x, double y)
-            {
-                X = Math.Round(x, 5);
-                Y = Math.Round(y, 5);
-            }
-        }
-
         private void CalcPathColor()
         {
             double colorGap = 100.0 / (segment - 1);

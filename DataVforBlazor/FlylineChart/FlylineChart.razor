@@ -1,0 +1,113 @@
+﻿@namespace DataVforBlazor
+
+<div class="dv-flyline-chart-enhanced"
+     :style="`background-image: url(${mergedConfig ? mergedConfig.bgImgSrc : ''})`"
+     :ref="ref"
+     @click="consoleClickPos">
+    <svg v-if="flylines.length" :width="width" :height="height">
+        <defs>
+            <radialGradient :id="flylineGradientId"
+                            cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff"
+                      stop-opacity="1" />
+                <stop offset="100%" stop-color="#fff"
+                      stop-opacity="0" />
+            </radialGradient>
+
+            <radialGradient :id="haloGradientId"
+                            cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff"
+                      stop-opacity="0" />
+                <stop offset="100%" stop-color="#fff"
+                      stop-opacity="1" />
+            </radialGradient>
+        </defs>
+
+        <!-- points -->
+        <g v-for="point in flylinePoints" :key="point.key + Math.random()">
+            <defs>
+                <circle v-if="point.halo.show"
+                        :id="`halo${unique}${point.key}`"
+                        :cx="point.coordinate[0]"
+                        :cy="point.coordinate[1]">
+                    <animate attributeName="r"
+                             :values="`1;${point.halo.radius}`"
+                             :dur="`${point.halo.time}s`"
+                             repeatCount="indefinite" />
+                    <animate attributeName="opacity"
+                             values="1;0"
+                             :dur="`${point.halo.time}s`"
+                             repeatCount="indefinite" />
+                </circle>
+            </defs>
+
+            <!-- halo gradient mask -->
+            <mask :id="`mask${unique}${point.key}`">
+                <use v-if="point.halo.show"
+                     :xlink:href="`#halo${unique}${point.key}`"
+                     :fill="`url(#${haloGradientId})`" />
+            </mask>
+
+            <!-- point halo -->
+            <use v-if="point.halo.show"
+                 :xlink:href="`#halo${unique}${point.key}`"
+                 :fill="point.halo.color"
+                 :mask="`url(#mask${unique}${point.key})`" />
+
+            <!-- point icon -->
+            <image v-if="point.icon.show"
+                   :xlink:href="point.icon.src"
+                   :width="point.icon.width"
+                   :height="point.icon.height"
+                   :x="point.icon.x"
+                   :y="point.icon.y" />
+
+            <!-- point text -->
+            <text v-if="point.text.show"
+                  :style="`fontSize:${point.text.fontSize}px;color:${point.text.color}`"
+                  :fill="point.text.color"
+                  :x="point.text.x"
+                  :y="point.text.y">
+                {{ point.name }}
+            </text>
+        </g>
+
+        <!-- flylines -->
+        <g v-for="(line, i) in flylines" :key="line.key + Math.random()">
+            <defs>
+                <path :id="line.key"
+                      :ref="line.key"
+                      :d="line.d"
+                      fill="transparent" />
+            </defs>
+
+            <!-- orbit line -->
+            <use :xlink:href="`#${line.key}`"
+                 :stroke-width="line.width"
+                 :stroke="line.orbitColor" />
+
+            <!-- fly line gradient mask -->
+            <mask :id="`mask${unique}${line.key}`">
+                <circle cx="0" cy="0" :r="line.radius" :fill="`url(#${flylineGradientId})`">
+                    <animateMotion :dur="line.time"
+                                   :path="line.d"
+                                   rotate="auto"
+                                   repeatCount="indefinite" />
+                </circle>
+            </mask>
+
+            <!-- fly line -->
+            <use v-if="flylineLengths[i]"
+                 :xlink:href="`#${line.key}`"
+                 :stroke-width="line.width"
+                 :stroke="line.color"
+                 :mask="`url(#mask${unique}${line.key})`">
+                <animate attributeName="stroke-dasharray"
+                         :from="`0, ${flylineLengths[i]}`"
+                         :to="`${flylineLengths[i]}, 0`"
+                         :dur="line.time"
+                         repeatCount="indefinite" />
+            </use>
+        </g>
+    </svg>
+</div>
