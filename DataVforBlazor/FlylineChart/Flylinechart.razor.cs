@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace DataVforBlazor
 {
@@ -20,11 +22,13 @@ namespace DataVforBlazor
         public int Width { get; set; } = 0;
         protected string width;
         [Parameter]
-        public FlylineChartConfig config { get; set; }
+        public FlylineChartConfig Config { get; set; }
 
-
+        private List<FlylineWithPath> flylines = new List<FlylineWithPath>();
+        private List<int> flylineLengths = new List<int>();
         private Random rd = new Random(Guid.NewGuid().GetHashCode());
         private readonly string ID = Guid.NewGuid().ToString("N");
+        private double unique;
         private string flylineGradientId { get; set; }
         private string haloGradientId { get; set; }
 
@@ -46,35 +50,39 @@ namespace DataVforBlazor
             }
             height = Height <= 0 ? "" : Height + "px";
             width = Width <= 0 ? "" : Width + "px";
-        }
-        protected override Task OnInitializedAsync()
-        {
+            
             flylineGradientId = $"flylineGradient-{ID}";
             haloGradientId = $"haloGradientId-{ID}";
-            return base.OnInitializedAsync();
+            unique = rd.NextDouble();
+            CalcflylinePoints();
+
+            CalcLinePaths();
+
+            await CalcLineLengths();
         }
+ 
 
         private void CalcflylinePoints()
         {
-            foreach (var item in config.points)
+            foreach (var item in Config.flylinePoints)
             {
                 if (item.text == null)
                 {
-                    item.text = config.text;
+                    item.text = new FlylineChartText(Config.text);
                 }
                 if (item.line == null)
                 {
-                    item.line = config.line;
+                    item.line = new FlylineChartLine(Config.line);
                 }
                 if (item.icon == null)
                 {
-                    item.icon = config.icon;
+                    item.icon = new FlylineChartIcon(Config.icon);
                 }
                 if (item.halo == null)
                 {
-                    item.halo = config.halo;
+                    item.halo =new FlylineChartHalo(Config.halo);
                 }
-                if (config.relative)
+                if (Config.relative)
                 {
                     item.coordinate = new DvPoint(item.coordinate.X * Width, item.coordinate.Y * Height);
                 }
@@ -90,32 +98,47 @@ namespace DataVforBlazor
         }
         private void CalcLinePaths()
         {
-            foreach (var item in config.lines)
+            flylines.Clear();
+            foreach (var item in Config.lines)
             {
-                var sourcePoint = config.points.FirstOrDefault(i => i.name == item.source)?.coordinate;
-                var targetPoint = config.points.FirstOrDefault(i => i.name == item.target)?.coordinate;
+                var sourcePoint = Config.flylinePoints.FirstOrDefault(i => i.name == item.source)?.coordinate;
+                var targetPoint = Config.flylinePoints.FirstOrDefault(i => i.name == item.target)?.coordinate;
+                var path = GetPath(sourcePoint, targetPoint);
+                var d = $"M{path[0].X},{path[0].Y} Q{path[1].X},{path[1].Y} {path[2].X},{path[2].Y}";
+                var key = $"path{path.GetHashCode()}";
+                flylines.Add(new FlylineWithPath
+                {
+                    path = path,
+                    d = d,
+                    key = key,
+                    time = rd.NextDouble() * ((20) / 10) + (20 / 10),
+                });
             }
         }
 
-        private void GetPath()
+        private List<DvPoint> GetPath(DvPoint start, DvPoint end)
         {
+            var controlPoint = GetControlPoint(start, end);
 
+            return new List<DvPoint> { start, controlPoint, end };
         }
-        private void GetControlPoint(DvPoint start, DvPoint end)
+        private DvPoint GetControlPoint(DvPoint start, DvPoint end)
         {
             var midPoint = new DvPoint((start.X + end.X) / 2.0, (start.Y + end.Y) / 2.0);
             var distance = GetPointDistance(start, end);
 
-            var targetLength = distance / config.curvature;
+            var targetLength = distance / Config.curvature;
             var disDived = targetLength / 2.0;
             var temPoint = new DvPoint(midPoint.X, midPoint.Y);
 
             do
             {
                 temPoint.X += disDived;
-                temPoint.Y = GetKLinePointByx(config.k, midPoint, temPoint.X).Y;
+                temPoint.Y = GetKLinePointByx(Config.k, midPoint, temPoint.X).Y;
             }
             while (GetPointDistance(midPoint, temPoint) < targetLength);
+
+            return temPoint;
         }
         private DvPoint GetKLinePointByx(double k, DvPoint point, double dx)
         {
@@ -130,6 +153,24 @@ namespace DataVforBlazor
             var minusY = Math.Abs(pointOne.Y - pointTwo.Y);
 
             return Math.Sqrt(minusX * minusX + minusY * minusY);
+        }
+
+        private async Task CalcLineLengths()
+        {
+            await Task.Yield();
+            flylineLengths.Clear();
+            foreach (var item in flylines)
+            {
+                flylineLengths.Add(9999);
+            }
+        }
+
+        internal class FlylineWithPath: FlylineChartLine
+        {
+            internal string d { get; set; }
+            internal string key { get; set; }
+            internal double time { get; set; }
+            internal List<DvPoint> path { get; set; }
         }
     }
 }
