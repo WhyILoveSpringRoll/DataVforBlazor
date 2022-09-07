@@ -1,0 +1,22 @@
+﻿@using System.ComponentModel
+<Title Level="4">@ComponentName</Title>
+<div style="width:760px;margin-bottom:50px">
+    <Table HidePagination TItem="Data" DataSource="@Data">
+        <Column @bind-Field="@context.Param">
+            <a>@context.Param</a>
+        </Column>
+        <Column @bind-Field="@context.Info"></Column>
+        <Column @bind-Field="@context.Type">
+            <span style="color:#c41d7f">@context.Type</span>
+        </Column>
+        <Column @bind-Field="@context.DefaultValue"></Column>
+    </Table>
+</div>
+
+
+@code {
+    [Parameter]
+    public Data[] Data { get; set; } = new Data[] { };
+    [Parameter]
+    public string ComponentName { get; set; }
+}

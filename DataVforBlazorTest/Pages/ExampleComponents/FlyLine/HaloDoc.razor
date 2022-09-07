@@ -1,0 +1,39 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "show",
+            Info = "是否显示光晕",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+         new()
+        {
+            Param = "duration",
+            Info = "光晕运动周期范围,光晕运动周期将在两个值的范围内随机取值（单位：秒）",
+            Type = "double[]",
+            DefaultValue = "{ 2, 3 }",
+        },
+          new()
+        {
+            Param = "color",
+            Info = "光晕颜色，#fff、red、rgba(128,128,128,0.5)",
+            Type = "string",
+            DefaultValue = "#fb7293",
+        },
+         new()
+        {
+            Param = "radius",
+            Info = "光晕半径（单位：像素）",
+            Type = "double",
+            DefaultValue = "120",
+        },
+        
+    };
+    string name = "Halo";
+    
+}

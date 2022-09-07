@@ -3,11 +3,23 @@
 @using DataVforBlazorTest.Pages.ExampleComponents.BoderBox
 @using System.ComponentModel
 @using AntDesign.TableModels
-
+@using DataVforBlazorTest.Pages.ExampleComponents.FlyLine
 <PageTitle>FlylineChart</PageTitle>
 <div style="width:722px;height:600px;background-color:#282c34;">
     <FlylineChart @ref="flylineChart" Config="@config" />
 </div>
+
+<div style=" margin-top:50px">
+    <ConfigDoc></ConfigDoc>
+<PointDoc></PointDoc>
+<FlylineDoc></FlylineDoc>
+<HaloDoc></HaloDoc>
+<TextDoc></TextDoc>
+<IconDoc></IconDoc>
+<LineDoc></LineDoc>
+
+</div>
+
 
 @code {
     FlylineChart flylineChart;
@@ -260,4 +272,8 @@
 
             }
         };
+
+
+ 
+    
 }

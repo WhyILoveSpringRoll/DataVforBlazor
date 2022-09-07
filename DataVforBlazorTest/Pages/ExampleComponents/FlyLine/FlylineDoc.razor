@@ -1,0 +1,29 @@
+﻿<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "source",
+            Info = "轨迹起始点（Point中的name属性）",
+            Type = "string",
+            DefaultValue = "",
+        },
+        new()
+        {
+            Param = "target",
+            Info = "轨迹终点（Point中的name属性）",
+            Type = "string",
+            DefaultValue = "",
+        },
+        new()
+        {
+            Param = "line",
+            Info = "轨迹配置（局部）",
+            Type = "FlylineChartLine",
+            DefaultValue = "",
+        },
+    };
+    string name = "FlylineChartPoint";
+}

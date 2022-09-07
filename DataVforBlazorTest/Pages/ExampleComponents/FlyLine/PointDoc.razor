@@ -1,0 +1,80 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "halo",
+            Info = "点的光晕配置（全局）",
+            Type = "FlylineChartHalo",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "text",
+            Info = "点的文本配置（全局）",
+            Type = "FlylineChartText",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "line",
+            Info = "飞线的配置（全局）",
+            Type = "FlylineChartLine",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "icon",
+            Info = "点的图标配置（全局）",
+            Type = "FlylineChartIcon",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "bgImgSrc",
+            Info = "背景图的url地址",
+            Type = "string",
+            DefaultValue = "",
+        },
+        new()
+        {
+            Param = "k",
+            Info = "飞线收束程度,范围[-1,1]",
+            Type = "double",
+            DefaultValue = "-0.5",
+        },
+          new()
+        {
+            Param = "curvature",
+            Info = "飞线曲率[1,10]",
+            Type = "double",
+            DefaultValue = "5",
+        },
+        new()
+        {
+            Param = "relative",
+            Info = "若使用相对坐标，点的坐标范围为[0,1]，不使用相对坐标则点的的坐标为具体像素位置",
+            Type = "bool",
+            DefaultValue = "true",
+        },
+           new()
+        {
+            Param = "flylinePoints",
+            Info = "数据点集合",
+            Type = "List<FlylineChartPoint>",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "lines",
+            Info = "飞线集合",
+            Type = "List<FlylineChartFlyLine>",
+            DefaultValue = "",
+        },
+    };
+    string name = "Point";
+    
+}

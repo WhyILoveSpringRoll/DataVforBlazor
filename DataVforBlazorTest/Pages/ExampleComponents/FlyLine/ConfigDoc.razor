@@ -1,0 +1,31 @@
+﻿<ParamTable ComponentName="@name" Data="@data" />
+
+
+@code{
+    Data[] data = new Data[]
+       {
+        new()
+        {
+            Param = "Width",
+            Info = "组件的宽度（像素（支持）、百分比（暂不支持））,值小于0时代表自适应宽度",
+            Type = "int",
+            DefaultValue = "0",
+        },
+         new()
+        {
+            Param = "Height",
+            Info = "组件的高度（像素（支持）、百分比（暂不支持））,值小于0时代表自适应高度",
+            Type = "int",
+            DefaultValue = "0",
+        },
+        new()
+        {
+            Param = "Config",
+            Info = "组件的配置参数",
+            Type = "FlylineChartConfig",
+            DefaultValue = "-",
+        },
+       };
+
+    string name = "Config";
+}

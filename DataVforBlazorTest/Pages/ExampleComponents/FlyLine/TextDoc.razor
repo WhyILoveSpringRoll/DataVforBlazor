@@ -1,0 +1,39 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "show",
+            Info = "是否显示文本",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+         new()
+        {
+            Param = "offset",
+            Info = "文本偏移量（单位：像素）",
+            Type = "int[]",
+            DefaultValue = "{ 0, 15 }",
+        },
+          new()
+        {
+            Param = "color",
+            Info = "文本颜色，#fff、red、rgba(128,128,128,0.5)",
+            Type = "string",
+            DefaultValue = "#ffdb5c",
+        },
+         new()
+        {
+            Param = "fontSize",
+            Info = "文本字体大小",
+            Type = "int",
+            DefaultValue = "12",
+        },
+        
+    };
+    string name = "Text";
+    
+}

@@ -1,0 +1,39 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "show",
+            Info = "是否显示图标",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+         new()
+        {
+            Param = "src",
+            Info = "图标的url地址",
+            Type = "string",
+            DefaultValue = "",
+        },
+          new()
+        {
+            Param = "wdith",
+            Info = "图标宽度（单位：像素）",
+            Type = "int",
+            DefaultValue = "15",
+        },
+         new()
+        {
+            Param = "height",
+            Info = "图标高度（单位：像素）",
+            Type = "int",
+            DefaultValue = "15",
+        },
+        
+    };
+    string name = "Icon";
+    
+}

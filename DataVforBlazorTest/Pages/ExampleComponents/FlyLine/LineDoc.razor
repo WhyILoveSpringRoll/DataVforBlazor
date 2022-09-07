@@ -1,0 +1,46 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "width",
+            Info = "飞线宽度",
+            Type = "int",
+            DefaultValue = "1",
+        },
+          new()
+        {
+            Param = "color",
+            Info = "飞线颜色，#fff、red、rgba(128,128,128,0.5)",
+            Type = "string",
+            DefaultValue = "#ffde93",
+        },
+         new()
+        {
+            Param = "orbitColor",
+            Info = "飞线轨迹颜色，#fff、red、rgba(128,128,128,0.5)",
+            Type = "string",
+            DefaultValue = "rgba(103, 224, 227, 0.2)",
+        },
+         new()
+        {
+            Param = "duration",
+            Info = "飞线动画时长，飞线动画时长将在两个值的范围内随机取值（单位：秒）",
+            Type = "double[]",
+            DefaultValue = "{ 2, 3 }",
+        },
+         new()
+        {
+            Param = "radius",
+            Info = "飞线显示半径（单位：像素）",
+            Type = "double",
+            DefaultValue = "100",
+        },
+
+    };
+    string name = "Line";
+
+}
