@@ -25,7 +25,8 @@ namespace DataVforBlazor
 
     public class FlylineChartPoint
     {
-        public DvPoint coordinate { get; set; } 
+        public DvPoint coordinate { get; set; }
+        internal DvPoint position { get; set; } 
         public string name { get; set; } = "";
         public FlylineChartText text { get; set; }
         public FlylineChartHalo halo { get; set; }
@@ -43,8 +44,8 @@ namespace DataVforBlazor
 
     public class FlylineChartHalo
     {
-        public bool show { get; set; } = true;
-        public double[] duration { get; set; } = { 20, 30 };
+        public bool show { get; set; } = false;
+        public double[] duration { get; set; } = { 2, 3 };
         public string color { get; set; } = "#fb7293";
         public double radius { get; set; } = 120;
         internal double time { get; set; } = 0;
@@ -64,7 +65,7 @@ namespace DataVforBlazor
 
     public class FlylineChartText
     {
-        public bool show { get; set; } = true;
+        public bool show { get; set; } = false;
         public int[] offset { get; set; } = { 0, 15 };
         public string color { get; set; } = "#ffdb5c";
         public int fontSize { get; set; } = 12;
@@ -84,7 +85,7 @@ namespace DataVforBlazor
     }
     public class FlylineChartIcon
     {
-        public bool show { get; set; } = true;
+        public bool show { get; set; } = false;
         public int offset { get; set; } = 0;
         public int width { get; set; } = 15;
         public int height { get; set; } = 15;
@@ -113,7 +114,7 @@ namespace DataVforBlazor
 
         public string orbitColor { get; set; } = "rgba(103, 224, 227, 0.2)";
 
-        public double[] duration { get; set; } = { 20, 30 };
+        public double[] duration { get; set; } = { 2, 3 };
 
         public double radius { get; set; } = 100;
         public FlylineChartLine()

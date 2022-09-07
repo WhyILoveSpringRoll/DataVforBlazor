@@ -8,3 +8,8 @@ export function GetHeight(id) {
     var height = div.offsetHeight;
     return height;
 }
+export function GetLength(id) {
+    var svg = document.getElementById(id);
+    var length = svg.getTotalLength()
+    return length;
+}

@@ -33,7 +33,7 @@
         <Column @bind-Field="@context.DefaultValue"></Column>
     </Table>
 </div>
-
+<Button OnClick="ButtonClick">remove</Button>
 @code {
     Data[] data = new Data[]
     {
@@ -97,5 +97,8 @@
         public string DefaultValue { get; set; }
     }
 
-
+    private void ButtonClick()
+    {
+        StateHasChanged();
+    }
 }

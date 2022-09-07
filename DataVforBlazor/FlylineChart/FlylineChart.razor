@@ -31,8 +31,8 @@
                         @if (point.halo.show)
                         {
                             <circle id="halo@(unique+point.key)"
-                        cx="@point.coordinate.X"
-                        cy="@point.coordinate.Y">
+                        cx="@point.position.X"
+                        cy="@point.position.Y">
                                 <animate attributeName="r"
                              values="1;@point.halo.radius"
                              dur="@(point.halo.time)s"
@@ -67,14 +67,13 @@
 
 
                     <!-- point text -->
-                    @if (point.text.show)
-                    {
-                        <div>
-                            <text style="fontSize:@(point.text.fontSize)px;color:@(point.text.color)" fill="@point.text.color" x="@point.text.x" y="@point.text.y">
-                                @point.name
-                            </text>
-                        </div>
-                    }
+                 
+                    <text style="fontSize:@(point.text.fontSize)px;color:@(point.text.color)" fill="@point.text.color" x="@point.text.x" y="@point.text.y">
+                        @if(point.text.show)
+                        {
+                            @point.name;
+                        }
+                    </text>
                 </g>
             }
 
@@ -83,7 +82,7 @@
             @foreach (var line in flylines)
             {
                 var i = flylines.IndexOf(line);
-                <g key="@(line.key + rd.NextDouble())">
+                <g key="@(line.key+rd.NextDouble())">
                     <defs>
                         <path id="@line.key"
                       ref="@line.key"

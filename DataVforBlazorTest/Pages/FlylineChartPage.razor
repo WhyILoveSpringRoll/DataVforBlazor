@@ -5,3 +5,259 @@
 @using AntDesign.TableModels
 
 <PageTitle>FlylineChart</PageTitle>
+<div style="width:722px;height:600px;background-color:#282c34;">
+    <FlylineChart @ref="flylineChart" Config="@config" />
+</div>
+
+@code {
+    FlylineChart flylineChart;
+    FlylineChartConfig config = new FlylineChartConfig()
+        {
+            bgImgSrc = "map.jpg",
+            k = 0.5,
+            icon = new FlylineChartIcon()
+            {
+                show = true,
+                src = "mapPoint.png"
+            },
+            text = new FlylineChartText()
+            {
+                show = true
+            },
+
+
+            flylinePoints = new List<FlylineChartPoint> {
+                new FlylineChartPoint
+                {
+                    name = "郑州",
+                    coordinate = new DvPoint(0.48, 0.35),
+                    halo = new FlylineChartHalo {
+                        show = true,
+                    },
+                    icon = new FlylineChartIcon {
+                        src = "mapCenterPoint.png",
+                        width = 30,
+                        height = 30,
+                        show=true,
+                    },
+                    text = new FlylineChartText {
+                        show = false,
+                    }
+                },
+                new FlylineChartPoint
+                {
+                    name = "新乡",
+                    coordinate = new DvPoint(0.52, 0.23),
+                },
+                new FlylineChartPoint
+                {
+                    name = "焦作",
+                    coordinate = new DvPoint(0.43, 0.29),
+                },
+                new FlylineChartPoint
+                {
+                    name = "开封",
+                    coordinate = new DvPoint(0.59, 0.35),
+                },
+                new FlylineChartPoint
+                {
+                    name = "许昌",
+                    coordinate = new DvPoint(0.53, 0.47),
+                },
+                new FlylineChartPoint
+                {
+                    name = "平顶山",
+                    coordinate = new DvPoint(0.45, 0.54),
+                },
+                new FlylineChartPoint
+                {
+                    name = "洛阳",
+                    coordinate = new DvPoint(0.36, 0.38),
+                },
+                new FlylineChartPoint
+                {
+                    name = "周口",
+                    coordinate = new DvPoint(0.62, 0.55),
+                    halo = new FlylineChartHalo {
+                        show = true,
+                        color = "#8378ea",
+                    }
+                }, new FlylineChartPoint
+                {
+                    name = "漯河",
+                    coordinate = new DvPoint(0.56, 0.56),
+                },
+                new FlylineChartPoint
+                {
+                    name = "南阳",
+                    coordinate = new DvPoint(0.37, 0.66),
+                    halo = new FlylineChartHalo {
+                        show = true,
+                        color = "#37a2da",
+                    }
+                },
+                new FlylineChartPoint
+                {
+                    name = "信阳",
+                    coordinate = new DvPoint(0.55, 0.81),
+                },
+                new FlylineChartPoint
+                {
+                    name = "驻马店",
+                    coordinate = new DvPoint(0.55, 0.67),
+                },
+                new FlylineChartPoint
+                {
+                    name = "济源",
+                    coordinate = new DvPoint(0.37, 0.29),
+                },
+                new FlylineChartPoint
+                {
+                    name = "三门峡",
+                    coordinate = new DvPoint(0.20, 0.36),
+                },
+                new FlylineChartPoint
+                {
+                    name = "商丘",
+                    coordinate = new DvPoint(0.76, 0.41),
+                },
+                new FlylineChartPoint
+                {
+                    name = "鹤壁",
+                    coordinate = new DvPoint(0.59, 0.18),
+                },
+                new FlylineChartPoint
+                {
+                    name = "濮阳",
+                    coordinate = new DvPoint(0.68, 0.17),
+                },
+                new FlylineChartPoint
+                {
+                    name = "安阳",
+                    coordinate = new DvPoint(0.59, 0.10),
+                },
+            },
+
+
+            lines = new List<FlylineChartFlyLine> {
+                new FlylineChartFlyLine
+                {
+                     source = "新乡",
+                     target = "郑州",
+                },
+                 new FlylineChartFlyLine
+                {
+                     source = "焦作",
+                     target = "郑州",
+                },
+                 new FlylineChartFlyLine
+                {
+                     source = "开封",
+                     target = "郑州",
+                },
+                 new FlylineChartFlyLine
+                {
+                     source = "周口",
+                     target = "郑州",
+                     line=new FlylineChartLine{
+                         width=2,
+                         color="#fb7293",
+                     }
+                },
+                 new FlylineChartFlyLine
+                {
+                     source = "南阳",
+                     target = "郑州",
+                     line=new FlylineChartLine{
+                         width=2,
+                         color="#fb7293",
+                     }
+                },
+                  new FlylineChartFlyLine
+                {
+                     source = "济源",
+                     target = "郑州",
+                },
+                  new FlylineChartFlyLine
+                {
+                     source = "三门峡",
+                     target = "郑州",
+                },
+                  new FlylineChartFlyLine
+                {
+                     source = "商丘",
+                     target = "郑州",
+                },
+                  new FlylineChartFlyLine
+                {
+                     source = "鹤壁",
+                     target = "郑州",
+                },
+                  new FlylineChartFlyLine
+                {
+                     source = "濮阳",
+                     target = "郑州",
+                },
+                  new FlylineChartFlyLine
+                {
+                     source = "安阳",
+                     target = "郑州",
+                },
+                 new FlylineChartFlyLine
+                {
+                     source = "许昌",
+                     target = "南阳",
+                     line=new FlylineChartLine{
+
+                         color="#37a2da",
+                     }
+                },
+                  new FlylineChartFlyLine
+                {
+                     source = "平顶山",
+                     target = "南阳",
+                     line=new FlylineChartLine{
+
+                         color="#37a2da",
+                     }
+                },
+                    new FlylineChartFlyLine
+                {
+                     source = "洛阳",
+                     target = "南阳",
+                     line=new FlylineChartLine{
+
+                         color="#37a2da",
+                     }
+                },
+                    new FlylineChartFlyLine
+                {
+                     source = "驻马店",
+                     target = "周口",
+                     line=new FlylineChartLine{
+
+                         color="#8378ea",
+                     }
+                },
+                 new FlylineChartFlyLine
+                {
+                     source = "信阳",
+                     target = "周口",
+                     line=new FlylineChartLine{
+
+                         color="#8378ea",
+                     }
+                },
+                 new FlylineChartFlyLine
+                {
+                     source = "漯河",
+                     target = "周口",
+                     line=new FlylineChartLine{
+
+                         color="#8378ea",
+                     }
+                },
+
+            }
+        };
+}
