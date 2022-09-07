@@ -1,0 +1,24 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "X",
+            Info = "点的X轴坐标,(像素或相对位置百分比)",
+            Type = "double",
+            DefaultValue = "",
+        },
+           new()
+        {
+            Param = "Y",
+            Info = "点的Y轴坐标,(像素或相对位置百分比)",
+            Type = "double",
+            DefaultValue = "",
+        },
+    };
+    string name = "DvPoint";
+
+}

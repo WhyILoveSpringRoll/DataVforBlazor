@@ -31,7 +31,6 @@ namespace DataVforBlazor
         public FlylineChartText text { get; set; }
         public FlylineChartHalo halo { get; set; }
         public FlylineChartIcon icon { get; set; }
-        public FlylineChartLine line { get; set; }
         internal string key { get; set; }
     }
 

@@ -76,10 +76,6 @@ namespace DataVforBlazor
                 {
                     item.text = new FlylineChartText(Config.text);
                 }
-                if (item.line == null)
-                {
-                    item.line = new FlylineChartLine(Config.line);
-                }
                 if (item.icon == null)
                 {
                     item.icon = new FlylineChartIcon(Config.icon);
