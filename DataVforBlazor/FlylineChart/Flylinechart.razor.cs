@@ -21,8 +21,25 @@ namespace DataVforBlazor
         [Parameter]
         public int Width { get; set; } = 0;
         protected string width;
+        private FlylineChartConfig _config;
         [Parameter]
-        public FlylineChartConfig Config { get; set; }
+        public FlylineChartConfig Config
+        {
+            get
+            {
+                return _config;
+            }
+            set
+            {
+                if(value!=_config)
+                {
+                    _config = value;
+                    CalcflylinePoints();
+                    CalcLinePaths();
+                    CalcLineLengths();
+                }
+            }
+        }
 
         private List<FlylineWithPath> flylines = new List<FlylineWithPath>();
         private List<double> flylineLengths = new List<double>();
@@ -61,7 +78,7 @@ namespace DataVforBlazor
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
 
-            if(firstRender)
+            if (firstRender)
             {
                 await CalcLineLengths();
                 await base.OnAfterRenderAsync(firstRender);
@@ -90,9 +107,9 @@ namespace DataVforBlazor
                 }
                 else
                 {
-                    item.position=new DvPoint(item.coordinate.X, item.coordinate.Y);
+                    item.position = new DvPoint(item.coordinate.X, item.coordinate.Y);
                 }
-                item.halo.time = rd.NextDouble() * ((item.halo.duration[1] - item.halo.duration[0]) ) + (item.halo.duration[0] );
+                item.halo.time = rd.NextDouble() * ((item.halo.duration[1] - item.halo.duration[0])) + (item.halo.duration[0]);
 
                 item.icon.x = (item.position.X - item.icon.width / 2);
                 item.icon.y = (item.position.Y - item.icon.height / 2);
@@ -104,10 +121,11 @@ namespace DataVforBlazor
         }
         private void CalcLinePaths()
         {
+            Console.WriteLine("CalcLinePaths");
             flylines.Clear();
             foreach (var item in Config.lines)
             {
-                if(item.line==null)
+                if (item.line == null)
                 {
                     item.line = new FlylineChartLine(Config.line);
                 }
@@ -121,8 +139,8 @@ namespace DataVforBlazor
                     path = path,
                     d = d,
                     key = key,
-                    time = rd.NextDouble() * ((item.line.duration[1] - item.line.duration[0]) ) + (item.line.duration[0])
-            });
+                    time = rd.NextDouble() * ((item.line.duration[1] - item.line.duration[0])) + (item.line.duration[0])
+                });
             }
         }
         public void RemovePoint(string name)
@@ -184,7 +202,7 @@ namespace DataVforBlazor
             var module = await moduleTask.Value;
             foreach (var item in flylines)
             {
-                flylineLengths.Add( double.Parse((await module.InvokeAsync<object>("GetLength", item.key)).ToString()));
+                flylineLengths.Add(double.Parse((await module.InvokeAsync<object>("GetLength", item.key)).ToString()));
             }
             StateHasChanged();
         }

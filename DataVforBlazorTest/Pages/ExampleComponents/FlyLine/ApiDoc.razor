@@ -1,6 +1,6 @@
 ﻿<ParamTable ComponentName="@name" Data="@data" />
 
-
+<ParamTable ComponentName="Method" Data="@data1" />
 @code{
     Data[] data = new Data[]
        {
@@ -27,5 +27,16 @@
         },
        };
 
+    Data[] data1 = new Data[]
+       {
+        new()
+        {
+            Param = "RemovePoint",
+            Info = "移除相关的点和飞线，传入参数为点的name属性",
+            Type = "void",
+            DefaultValue = "",
+        },
+        
+       };
     string name = "API";
 }

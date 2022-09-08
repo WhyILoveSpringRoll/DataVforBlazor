@@ -4,9 +4,17 @@
 @using System.ComponentModel
 @using AntDesign.TableModels
 @using DataVforBlazorTest.Pages.ExampleComponents.FlyLine
+@using Newtonsoft.Json
 <PageTitle>FlylineChart</PageTitle>
 <div style="width:722px;height:600px;background-color:#282c34;">
     <FlylineChart @ref="flylineChart" Config="@config" />
+</div>
+
+<div style="margin-top:20px">
+     <span style="font-size:14px">json:</span>
+<TextArea Style="margin-top:10px" Rows="10" @bind-Value="@json" />
+
+<Button Style="margin-top:10px" Type="@ButtonType.Primary" OnClick="Button_Click">应用</Button>
 </div>
 
 <div style=" margin-top:50px">
@@ -20,6 +28,7 @@
 <LineDoc></LineDoc>
 <DvpointDoc></DvpointDoc>
 </div>
+
 
 
 @code {
@@ -274,7 +283,15 @@
             }
         };
 
+    string json = "";
 
- 
+    protected override void OnInitialized()
+    {
+        json = JsonConvert.SerializeObject(config);
+    }
+    private void Button_Click()
+    {
+        config = JsonConvert.DeserializeObject<FlylineChartConfig>(json);
+    }
     
 }
