@@ -2,3 +2,44 @@
 @using DataVforBlazor
 
 <PageTitle>DataVforBlazor</PageTitle>
+<div style="width:722px;height:600px;background-color:#282c34;">
+    <ConicalColumnChart Config="config"></ConicalColumnChart>
+</div>
+
+@code
+{
+    ConicalColumnChartConfig config = new ConicalColumnChartConfig()
+    {
+        data=new List<ConicalData> { 
+            new ConicalData{
+                name="周口",
+                value=55
+            },
+             new ConicalData{
+                name="南阳",
+                value=120
+            },
+             new ConicalData{
+                name="西峡",
+                value=71
+            },
+             new ConicalData{
+                name="驻马店",
+                value=66
+            },
+             new ConicalData{
+                name="新乡",
+                value=80
+            },
+             new ConicalData{
+                name="信阳",
+                value=35
+            },
+            new ConicalData{
+                name="漯河",
+                value=15
+            },
+        },
+        showValue=true,
+    };
+}

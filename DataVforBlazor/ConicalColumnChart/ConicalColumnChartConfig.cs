@@ -8,7 +8,7 @@ namespace DataVforBlazor
 {
     public class ConicalColumnChartConfig
     {
-        public int fontsize { get; set; } = 12;
+        public int fontSize { get; set; } = 12;
         public int imgSideLength { get; set; } = 30;
 
         public string columnColor { get; set; } = "rgba(0, 194, 255, 0.4)";
@@ -18,6 +18,13 @@ namespace DataVforBlazor
 
         public List<string> img { get; set; } = new List<string>();
 
-        public Dictionary<string, double> data =new Dictionary<string, double>();
+        public List<ConicalData> data = new List<ConicalData>();
+    }
+
+    public class ConicalData
+    {
+        public string name { get; set; }
+        public double value { get; set; }
+        internal double percent { get; set; }
     }
 }

@@ -1,2 +1,39 @@
 ﻿@namespace DataVforBlazor
 
+<div id="@ID" class="dv-conical-column-chart" style="height:100%;width:100%">
+    <svg style="height:@height;width:@width">
+        @foreach (var item in conicalColumns)
+        {
+            int i = conicalColumns.IndexOf(item);
+            <g key="@i">
+                <path d="@item.d"
+                  fill="@Config.columnColor" />
+                <text style="font-size:@(Config.fontSize)px"
+                  fill="@Config.textColor"
+                  x="@item.x"
+                  y="@(Height - 4)">
+                    @item.name
+                </text>
+                @if (Config.img.Count > 0)
+                {
+                    <image href="@(Config.img[i%Config.img.Count()])"
+                   width="@Config.imgSideLength"
+                   height="@Config.imgSideLength"
+                   x="@(item.x - Config.imgSideLength / 2)"
+                   y="@(item.y - Config.imgSideLength)" />
+                }
+
+                <text 
+                  style="font-size:@(Config.fontSize)px"
+                  fill="@Config.textColor"
+                  x="@item.x"
+                  y="@item.textY">
+                    @if (Config.showValue)
+                    {
+                        @item.value
+                    }
+                </text>
+            </g>
+        }
+    </svg>
+</div>
