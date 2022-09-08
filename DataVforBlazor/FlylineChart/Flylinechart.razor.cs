@@ -134,7 +134,7 @@ namespace DataVforBlazor
                 var path = GetPath(sourcePoint, targetPoint);
                 var d = $"M{path[0].X},{path[0].Y} Q{path[1].X},{path[1].Y} {path[2].X},{path[2].Y}";
                 var key = $"path{path.GetHashCode()}";
-                flylines.Add(new FlylineWithPath
+                flylines.Add(new FlylineWithPath(item.line)
                 {
                     path = path,
                     d = d,
@@ -213,6 +213,18 @@ namespace DataVforBlazor
             internal string key { get; set; }
             internal double time { get; set; }
             internal List<DvPoint> path { get; set; }
+            public FlylineWithPath(FlylineChartLine line)
+            {
+                base.width = line.width;
+                base.duration = line.duration;
+                base.orbitColor = line.orbitColor;
+                base.color = line.color;
+                base.radius = line.radius;
+            }
+            public FlylineWithPath()
+            {
+
+            }     
         }
     }
 }
