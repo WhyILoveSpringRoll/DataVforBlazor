@@ -65,7 +65,7 @@ namespace DataVforBlazor
                 var rightXpos = gap * (i + 2);
                 var middleYPos = svgBottom - useAbleHeight * item.percent;
                 var controlYPos = useAbleHeight * item.percent * 0.6 + middleYPos;
-                var d = $"M{leftXPos}, ${svgBottom} Q{middleXPos}, {controlYPos} {middleXPos},{middleYPos} M{middleXPos},{middleYPos} Q{middleXPos}, {controlYPos} {rightXpos},{svgBottom} L{leftXPos}, {svgBottom} Z";
+                var d = $"M{leftXPos}, {svgBottom} Q{middleXPos}, {controlYPos} {middleXPos},{middleYPos} M{middleXPos},{middleYPos} Q{middleXPos}, {controlYPos} {rightXpos},{svgBottom} L{leftXPos}, {svgBottom} Z";
                 var textY = (svgBottom + middleYPos) / 2 + Config.fontSize / 2;
                 conicalColumns.Add(new ConicalColumn(item)
                 {
