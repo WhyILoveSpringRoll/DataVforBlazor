@@ -1,0 +1,60 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "data",
+            Info = "柱数据",
+            Type = "List<ConicalData>",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "img",
+            Info = "柱顶图片url(全局)；若配置该项，未配置局部图片的柱，会循环使用全局图片",
+            Type = "List<string>",
+            DefaultValue = "empty",
+        },
+        new()
+        {
+            Param = "fontSize",
+            Info = "文字大小",
+            Type = "int",
+            DefaultValue = "12",
+        },
+        new()
+        {
+            Param = "imgSideLength",
+            Info = "图片边长",
+            Type = "int",
+            DefaultValue = "30",
+        },
+        new()
+        {
+            Param = "columnColor",
+            Info = "柱颜色",
+            Type = "string",
+            DefaultValue = "rgba(0, 194, 255, 0.4)",
+        },
+         new()
+        {
+            Param = "textColor",
+            Info = "文字颜色",
+            Type = "string",
+            DefaultValue = "#fff",
+        },
+         new()
+        {
+            Param = "showValue",
+            Info = "显示数值",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+
+    };
+    string name = "ConicalColumnChartConfig";
+
+}

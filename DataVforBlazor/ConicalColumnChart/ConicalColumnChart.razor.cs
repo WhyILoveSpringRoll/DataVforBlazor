@@ -87,6 +87,7 @@ namespace DataVforBlazor
                 base.value = data.value;
                 base.name = data.name;
                 base.percent = data.percent;
+                base.img = data.img;
             }
 
         }

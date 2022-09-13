@@ -4,6 +4,7 @@
     <svg style="height:@height;width:@width">
         @foreach (var item in conicalColumns)
         {
+            Console.WriteLine(item.name+"++++"+item.img);
             int i = conicalColumns.IndexOf(item);
             <g key="@i">
                 <path d="@item.d"
@@ -14,17 +15,27 @@
                   y="@(Height - 4)">
                     @item.name
                 </text>
-                @if (Config.img.Count > 0)
+                @if (item.img != null)
                 {
-                    <image href="@(Config.img[i%Config.img.Count()])"
+                    <image href="@item.img"
                    width="@Config.imgSideLength"
                    height="@Config.imgSideLength"
                    x="@(item.x - Config.imgSideLength / 2)"
                    y="@(item.y - Config.imgSideLength)" />
                 }
-
-                <text 
-                  style="font-size:@(Config.fontSize)px"
+                else
+                {
+                    @if (Config.img.Count > 0)
+                    {
+                        <image href="@(Config.img[i%Config.img.Count()])"
+                   width="@Config.imgSideLength"
+                   height="@Config.imgSideLength"
+                   x="@(item.x - Config.imgSideLength / 2)"
+                   y="@(item.y - Config.imgSideLength)" />
+                    }
+                }
+                
+                <text style="font-size:@(Config.fontSize)px"
                   fill="@Config.textColor"
                   x="@item.x"
                   y="@item.textY">

@@ -1,0 +1,81 @@
+﻿@page "/ConicalColumnChart"
+@using DataVforBlazor
+@using System.ComponentModel
+@using AntDesign.TableModels
+@using DataVforBlazorTest.Pages.ExampleComponents.ConicalColumnChart
+@using Newtonsoft.Json
+<PageTitle>锥形柱图</PageTitle>
+<div style="width:610px;height:300px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:400px;height:200px;background-color:#282c34;">
+    <ConicalColumnChart Config="config"></ConicalColumnChart>
+    </div>
+</div>
+
+<div style="margin-top:20px;margin-bottom:50px">
+    <span style="font-size:14px">json:</span>
+<TextArea Style="margin-top:10px" Rows="5" @bind-Value="@json" />
+
+    <Button Style="margin-top:10px" Type="@ButtonType.Primary" OnClick="Button_Click">应用</Button>
+</div>
+<div style=" margin-top:50px">
+    <ConfigDoc/>
+    <ConicalDataDoc/>
+</div>
+@code {
+    ConicalColumnChartConfig config = new ConicalColumnChartConfig()
+        {
+            data = new List<ConicalData> {
+            new ConicalData{
+                name="周口",
+                value=55,
+                 img="ConicalColumnChartImg/5th.png",
+            },
+             new ConicalData{
+                name="南阳",
+                value=120,
+               
+            },
+             new ConicalData{
+                name="西峡",
+                value=71
+            },
+             new ConicalData{
+                name="驻马店",
+                value=66
+            },
+             new ConicalData{
+                name="新乡",
+                value=80
+            },
+             new ConicalData{
+                name="信阳",
+                value=35
+            },
+            new ConicalData{
+                name="漯河",
+                value=15
+            },
+        },
+            showValue = true,
+            img = new List<string> {
+                "ConicalColumnChartImg/1st.png",
+                "ConicalColumnChartImg/2nd.png",
+                "ConicalColumnChartImg/3rd.png",
+                "ConicalColumnChartImg/4th.png",
+                "ConicalColumnChartImg/5th.png",
+                "ConicalColumnChartImg/6th.png",
+                "ConicalColumnChartImg/7th.png",
+            },
+        };
+
+    string json = "";
+
+    protected override void OnInitialized()
+    {
+        json = JsonConvert.SerializeObject(config);
+    }
+    private void Button_Click()
+    {
+        config = JsonConvert.DeserializeObject<ConicalColumnChartConfig>(json);
+    }
+}

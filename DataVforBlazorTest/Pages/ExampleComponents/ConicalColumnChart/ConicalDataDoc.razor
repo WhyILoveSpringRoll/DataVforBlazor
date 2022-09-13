@@ -1,0 +1,31 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "name",
+            Info = "柱名称",
+            Type = "string",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "value",
+            Info = "柱数值",
+            Type = "double",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "img",
+            Info = "柱顶图片url(局部)",
+            Type = "string",
+            DefaultValue = "",
+        },
+    };
+    string name = "ConicalData";
+    
+}

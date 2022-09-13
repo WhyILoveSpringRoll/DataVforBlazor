@@ -25,6 +25,7 @@ namespace DataVforBlazor
     {
         public string name { get; set; }
         public double value { get; set; }
+        public string img { get; set; }
         internal double percent { get; set; }
     }
 }
