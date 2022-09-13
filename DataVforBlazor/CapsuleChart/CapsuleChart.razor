@@ -1,0 +1,48 @@
+﻿@namespace DataVforBlazor
+
+<div id="@ID" class="dv-capsule-chart" style="height:100%;width:100%">
+    @if (Config.data != null && Config.data.Count > 0)
+    {
+        <div class="label-column">
+            @foreach (var item in Config.data)
+            {
+                <div key="@item.name">@item.name</div>
+            }
+            <div>&nbsp;</div>
+        </div>
+
+        <div class="capsule-container">
+
+            @foreach (var capsule in capsuleLength)
+            {
+                var index = capsuleLength.IndexOf(capsule);
+                <div class="capsule-item" key="@index">
+                    <div class="capsule-item-column"
+                 style="width: @(capsule * 100)%; background-color: @Config.colors[index % Config.colors.Count]);">
+                        @if (Config.showValue)
+                        {
+                            <div class="capsule-item-value">
+                                @capsuleValue[index]
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+
+            <div class="unit-label">
+                @foreach (var label in labelData)
+                {
+                    <div key="@label.GetHashCode()">
+                        @label
+                    </div>
+                }
+            </div>
+        </div>
+        @if (Config.unit != null)
+        {
+            <div class="unit-text">@Config.unit</div>
+        }
+    }
+
+</div>
