@@ -18,7 +18,7 @@
                 var index = capsuleLength.IndexOf(capsule);
                 <div class="capsule-item" key="@index">
                     <div class="capsule-item-column"
-                 style="width: @(capsule * 100)%; background-color: @Config.colors[index % Config.colors.Count]);">
+                 style="width: @(capsule * 100)%; background-color: @Config.colors[index % Config.colors.Count];">
                         @if (Config.showValue)
                         {
                             <div class="capsule-item-value">
@@ -44,5 +44,4 @@
             <div class="unit-text">@Config.unit</div>
         }
     }
-
 </div>

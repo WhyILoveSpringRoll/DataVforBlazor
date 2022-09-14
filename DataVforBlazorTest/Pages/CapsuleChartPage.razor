@@ -1,0 +1,67 @@
+﻿@page "/CapsuleChart"
+@using DataVforBlazor
+@using System.ComponentModel
+@using AntDesign.TableModels
+@using DataVforBlazorTest.Pages.ExampleComponents.CapsuleChart
+@using Newtonsoft.Json
+<PageTitle>胶囊柱图</PageTitle>
+<div style="width:610px;height:300px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:400px;height:200px;background-color:#282c34;">
+        <CapsuleChart Config="config"></CapsuleChart>
+    </div>
+</div>
+
+<div style="margin-top:20px;margin-bottom:50px">
+    <span style="font-size:14px">json:</span>
+<TextArea Style="margin-top:10px" Rows="3" @bind-Value="@json" />
+
+    <Button Style="margin-top:10px" Type="@ButtonType.Primary" OnClick="Button_Click">应用</Button>
+</div>
+<div style=" margin-top:50px">
+    <ConfigDoc />
+    <CapsuleDataDoc />
+</div>
+@code {
+    CapsuleChartConfig config = new CapsuleChartConfig
+        {
+            data = new List<CapsuleData> {
+                new CapsuleData {
+                    name = "南阳",
+                    value = 167,
+                },
+                new CapsuleData
+                {
+                    name = "周口",
+                    value = 67,
+                },
+                new CapsuleData
+                {
+                    name = "漯河",
+                    value = 123,
+                },
+                new CapsuleData
+                {
+                    name = "郑州",
+                    value = 55,
+                },
+                new CapsuleData
+                {
+                    name = "西峡",
+                    value = 98,
+                },
+            },
+            unit = "单位",
+            sort = true,
+        };
+
+    string json = "";
+
+    protected override void OnInitialized()
+    {
+        json = JsonConvert.SerializeObject(config);
+    }
+    private void Button_Click()
+    {
+        config = JsonConvert.DeserializeObject<CapsuleChartConfig>(json);
+    }
+}

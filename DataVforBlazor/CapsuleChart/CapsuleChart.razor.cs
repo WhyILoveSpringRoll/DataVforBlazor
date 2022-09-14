@@ -21,7 +21,7 @@ namespace DataVforBlazor
         private readonly string ID = Guid.NewGuid().ToString("N");
         private List<double> capsuleValue = new List<double>();
         private List<double> capsuleLength = new List<double>();
-        private List<string> labelData = new List<string>();
+        private List<double> labelData = new List<double>();
         private List<double> labelDataLength = new List<double>();
 
         [Inject]
@@ -50,7 +50,9 @@ namespace DataVforBlazor
         {
             if(Config.data.Count==0)
                 return;
-
+            if(Config.sort)
+                Config.data = Config.data.OrderByDescending(x => x.value).ToList();
+            
             this.capsuleValue = Config.data.Select(i => i.value).ToList();
             var maxValue = Config.data.Max(i => i.value);
             this.capsuleLength = capsuleValue.Select(i => i / 1.0 / maxValue).ToList();

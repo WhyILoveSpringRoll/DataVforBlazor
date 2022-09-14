@@ -1,0 +1,45 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "data",
+            Info = "柱数据",
+            Type = "List<CapsuleData>",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "unit",
+            Info = "单位",
+            Type = "string",
+            DefaultValue = "",
+        },
+        new()
+        {
+            Param = "colors",
+            Info = "环颜色",
+            Type = "List<string>",
+            DefaultValue = "['#37a2da', '#32c5e9', '#67e0e3', '#9fe6b8', '#ffdb5c', '#ff9f7f', '#fb7293']",
+        },
+        new()
+        {
+            Param = "showValue",
+            Info = "显示数值",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+        new()
+        {
+            Param = "sort",
+            Info = "自动排序（降序）",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+    };
+    string name = "CaspuleChartConfig";
+
+}
