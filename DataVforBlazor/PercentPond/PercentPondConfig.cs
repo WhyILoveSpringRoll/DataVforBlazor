@@ -16,7 +16,7 @@ namespace DataVforBlazor
         public List<int> lineDash { get; set; } = new List<int> { 5, 1 };
         public string textColor { get; set; } = "#fff";
         public int borderRadius { get; set; } = 5;
-
+        public bool showValue { get; set; } = true;
         public bool localGradient { get; set; } = false;
         public string formatter = "{value}%";
     }

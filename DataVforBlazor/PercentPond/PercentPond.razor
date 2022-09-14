@@ -37,7 +37,10 @@
               fill="@(Config!=null ? Config.textColor : "#fff")"
               x="@(Width / 2)"
               y="@(Height / 2)">
-           @Details()
+              @if(Config!=null && Config.showValue)
+              {
+                    @Details()
+              }
         </text>
     </svg>
 </div>

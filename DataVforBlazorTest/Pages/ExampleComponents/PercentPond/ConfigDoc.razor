@@ -1,0 +1,81 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "value	",
+            Info = "进度池数值(0-100)",
+            Type = "double",
+            DefaultValue = "0",
+        },
+         new()
+        {
+            Param = "colors",
+            Info = "进度池配色",
+            Type = "List<string>",
+            DefaultValue = "['#3DE7C9', '#00BAFF']",
+        },
+        new()
+        {
+            Param = "borderWidth",
+            Info = "边框宽度",
+            Type = "int",
+            DefaultValue = "3",
+        },
+        new()
+        {
+            Param = "borderGap",
+            Info = "边框间隙",
+            Type = "int",
+            DefaultValue = "3",
+        },
+        new()
+        {
+            Param = "lineDash",
+            Info = "线条间隙",
+            Type = "List<int>",
+            DefaultValue = "[5, 1]",
+        },
+         new()
+        {
+            Param = "textColor",
+            Info = "文字颜色",
+            Type = "string",
+            DefaultValue = "#fff",
+        },
+         new()
+        {
+            Param = "showValue",
+            Info = "显示数值",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+           new()
+        {
+            Param = "borderRadius",
+            Info = "边框半径",
+            Type = "int",
+            DefaultValue = "5",
+        },
+           new()
+        {
+            Param = "localGradient",
+            Info = "局部渐变",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+           new()
+        {
+            Param = "formatter",
+            Info = "信息格式化",
+            Type = "string",
+            DefaultValue = "'{value}%'",
+        },
+
+    };
+    string name = "PercentPondConfig";
+
+}
