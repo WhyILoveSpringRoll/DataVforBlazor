@@ -1,0 +1,47 @@
+﻿@namespace DataVforBlazor
+<div id="@ID" class="dv-percent-pond" style="width:100%;height:100%;">
+    <svg>
+        <defs>
+            <linearGradient id="@gradientId1" x1="0%" y1="0%" x2="100%" y2="0%">
+                @foreach (var lc in LinearGradient())
+                {
+                    <stop key="@lc.Key"
+                      offset="@(lc.Key)%"
+                      stop-color="@lc.Value" />
+                }
+            </linearGradient>
+            
+            <linearGradient id="@gradientId2" x1="0%" y1="0%" x2="@Gradient2XPos()" y2="0%">
+                @foreach (var lc in LinearGradient())
+                {
+                    <stop key="@lc.Key"
+                      offset="@(lc.Key)%"
+                      stop-color="@lc.Value" />
+                }
+            </linearGradient>
+        </defs>
+        <rect x="@(Config!=null? Config.borderWidth / 2:0)"
+              y="@(Config!=null? Config.borderWidth / 2:0)"
+              rx="@(Config!=null? Config.borderRadius:0)"
+              ry="@(Config!=null? Config.borderRadius:0)"
+              fill="transparent"
+              stroke-width="@(Config!=null? Config.borderWidth:0)"
+              stroke="url(#@(gradientId1)"
+              width="@(RectWidth() > 0 ? RectWidth() : 0)"
+              height="@(RectHeight() > 0 ? RectHeight() : 0)" />
+        <polyline stroke-width="@PolylineWidth()"
+                  stroke-dasharray="@(Config!=null ? string.Join(",",Config.lineDash): 0)"
+                  stroke="url(#@(PolylineGradient()))"
+                  points="@Points()" />
+        <text stroke="@(Config!=null ? Config.textColor : "#fff")"
+              fill="@(Config!=null ? Config.textColor : "#fff")"
+              x="@(Width / 2)"
+              y="@(Height / 2)">
+           @Details()
+        </text>
+    </svg>
+</div>
+
+@code {
+
+}
