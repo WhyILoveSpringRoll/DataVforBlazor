@@ -2,13 +2,62 @@
 @using DataVforBlazor
 
 <PageTitle>DataVforBlazor</PageTitle>
-@*<div style="width:610px;height:300px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
-    <div style="width:200px;height:100px;background-color:#282c34;">
-        
+<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:500px;height:300px;background-color:#282c34;">
+        <ScrollRankingBoard Config="config" @ref="reff"></ScrollRankingBoard>
     </div>
 </div>
-*@
+<Button Type="@ButtonType.Primary" OnClick="NextRow"> 翻页</Button>
 @code
 {
- 
+    private void NextRow()
+    {
+        reff.TakeData();
+    }
+ScrollRankingBoard reff;
+    
+    ScrollRankingBoardConfig config = new ScrollRankingBoardConfig
+    {
+        data=new List<ScrollRankingBoardData>{
+            new ScrollRankingBoardData {
+                    name = "南阳",
+                    value = 167,
+                },
+                new ScrollRankingBoardData
+                {
+                    name = "周口",
+                    value = 67,
+                },
+                new ScrollRankingBoardData
+                {
+                    name = "漯河",
+                    value = 123,
+                },
+                new ScrollRankingBoardData
+                {
+                    name = "郑州",
+                    value = 55,
+                },
+                new ScrollRankingBoardData 
+                {
+                    name = "西峡",
+                    value = 98,
+                },
+                 new ScrollRankingBoardData
+                {
+                    name = "禄劝",
+                    value = 200,
+                },
+                  new ScrollRankingBoardData
+                {
+                    name = "鹤庆",
+                    value = 99,
+                },
+                 new ScrollRankingBoardData
+                {
+                    name = "昆明",
+                    value = 88,
+                },
+        },
+    };
 }
