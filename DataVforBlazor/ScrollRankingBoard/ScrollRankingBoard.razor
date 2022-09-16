@@ -1,30 +1,10 @@
 ﻿@namespace DataVforBlazor
 
-<div id="@ID" class="dv-scroll-ranking-board">
-
-    @*@for (int i = 0; i < rows.Count; i++)
-    {
-        var item = rows[i];
-        <div class="row-item" key="@(item.ToString() + item.scroll)"
-         style="height: @(item.height)px;">
-            <div class="ranking-info">
-                <div class="rank">No.@item.ranking</div>
-                <div class="info-name">@item.name</div>
-                <div class="ranking-value">@(item.value + Config.unit)</div>
-            </div>
-
-            <div class="ranking-column">
-                <div class="inside-column"
-                 style="width: @(item.percent)%;">
-                    <div class="shine" />
-                </div>
-            </div>
-        </div>
-    }*@
+<div id="@ID" class="dv-scroll-ranking-board" onmouseover="@MouseOver" onmouseout="@MouseOut">
     @foreach (var item in rows)
     {
         var i = rows.IndexOf(item);
-        <div class="row-item" key="@(item.ToString() + item.scroll)"
+        <div class="row-item @(item.remove?"row-remove":"")" key="@(item.ToString() + item.scroll)"
          style="height: @(item.height)px;">
             <div class="ranking-info">
                 <div class="rank">No.@item.ranking</div>

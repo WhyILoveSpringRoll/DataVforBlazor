@@ -11,9 +11,10 @@ namespace DataVforBlazor
         public List<ScrollRankingBoardData> data { get; set; }
         public int rowNum { get; set; } = 5;
         public int waitTime { get; set; } = 2000;
-        public string carousel { get; set; } = "single";
+        public bool singleScroll { get; set; } = true;
         public string unit { get; set; } = "";
         public bool sort { get; set; } = true;
+        public bool hoverPause { get; set; } = true;
     }
 
     public class ScrollRankingBoardData
@@ -24,5 +25,6 @@ namespace DataVforBlazor
         internal int ranking { get; set; }
         internal int scroll { get; set; }
         internal int height { get; set; }
+        internal bool remove { get; set; } = false;
     }
 }

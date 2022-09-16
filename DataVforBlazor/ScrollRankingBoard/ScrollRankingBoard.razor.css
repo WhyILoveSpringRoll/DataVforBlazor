@@ -3,14 +3,17 @@
     height: 100%;
     color: #fff;
     overflow: hidden;
+    cursor:pointer;
 }
 
     .dv-scroll-ranking-board .row-item {
-        transition: all 0.3s;
         display: flex;
         flex-direction: column;
         justify-content: center;
         overflow: hidden;
+    }
+    .dv-scroll-ranking-board .row-remove {
+        transition: height 0.4s;
     }
 
     .dv-scroll-ranking-board .ranking-info {
