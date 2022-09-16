@@ -1,0 +1,24 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "name",
+            Info = "名称",
+            Type = "string",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "value",
+            Info = "数值",
+            Type = "double",
+            DefaultValue = "",
+        },
+    };
+    string name = "ScrollRankingBoardData";
+    
+}

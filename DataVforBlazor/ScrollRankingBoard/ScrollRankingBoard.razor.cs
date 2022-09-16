@@ -11,8 +11,24 @@ namespace DataVforBlazor
     public partial class ScrollRankingBoard
     {
 
+        private ScrollRankingBoardConfig _config;
         [Parameter]
-        public ScrollRankingBoardConfig Config { get; set; }
+        public ScrollRankingBoardConfig Config
+        {
+            get { 
+                return _config;
+            }
+            set { 
+                if(value!=_config)
+                {
+                    _config = value;
+                    if(ini)
+                    {
+                        CalcData();
+                    }
+                }
+            }
+        }
         [Parameter]
         public int Height { get; set; } = 0;
         protected string height;
@@ -43,22 +59,22 @@ namespace DataVforBlazor
             }
             height = Height <= 0 ? "" : Height + "px";
             width = Width <= 0 ? "" : Width + "px";
-            if(!ini)
+            if (!ini)
             {
                 CalcData();
-                ini = !ini;
+                ini = true;
+                Animation();
             }
         }
-        
+
         private async void CalcData()
         {
             CalcRowsData();
             CalcHeights();
-            Animation();
         }
         private void CalcRowsData()
         {
-            if(Config.sort)
+            if (Config.sort)
                 Config.data = Config.data.OrderByDescending(i => i.value).ToList();
             var value = Config.data.Select(i => i.value).ToList();
             var min = value.Min();
@@ -66,7 +82,7 @@ namespace DataVforBlazor
             var max = value.Max();
             var maxAbs = Math.Abs(max);
             var total = max + minAbs;
-            for(int i=0;i<Config.data.Count();i++)
+            for (int i = 0; i < Config.data.Count(); i++)
             {
                 Config.data[i].percent = (Config.data[i].value + minAbs) / total * 100.0;
                 Config.data[i].ranking = i + 1;
@@ -80,35 +96,35 @@ namespace DataVforBlazor
         }
         private void CalcHeights()
         {
-            var  avgHeight = Height / Config.rowNum;
-          
+            var avgHeight = Height / Config.rowNum;
+
             Config.data.ForEach(i => i.height = avgHeight);
             rows.ForEach(i => i.height = avgHeight);
         }
-        public async Task Animation()
+        private async Task Animation()
         {
             while (true)
             {
                 await Task.Delay(Config.waitTime);
-                 TakeData();
+                TakeData();
                 StateHasChanged();
             }
         }
-        public async Task TakeData()
+        private async Task TakeData()
         {
             if (!StartScroll)
                 return;
-            
-            if(Config.rowNum>=Config.data.Count)
+
+            if (Config.rowNum >= Config.data.Count)
             {
                 rows = Config.data;
                 return;
             }
-          
+
             var animationNum = Config.singleScroll ? 1 : Config.rowNum;
-            if(animationNum>rows.Count)
+            if (animationNum > rows.Count)
                 animationNum = rows.Count;
-            for (int i=0; i < animationNum; i++)
+            for (int i = 0; i < animationNum; i++)
             {
                 rows[i].remove = true;
                 rows[i].height = 0;
@@ -116,13 +132,13 @@ namespace DataVforBlazor
             await Task.Delay(400);
             for (int i = 0; i < animationNum; i++)
             {
-                
+
                 var first = rows.FirstOrDefault();
                 first.remove = false;
                 rows.Remove(first);
             }
             StateHasChanged();
-            animationIndex ++;
+            animationIndex++;
 
             if (Config.singleScroll)
             {
@@ -140,7 +156,7 @@ namespace DataVforBlazor
             else//按页翻，到最后一页重写补
             {
                 int aaa = Config.data.Count / Config.rowNum;
-                if (animationIndex>=(Config.data.Count/Config.rowNum+1))
+                if (animationIndex >= (Config.data.Count / Config.rowNum + 1))
                 {
                     animationIndex = 0;
                     this.rows = Config.data.Take(Config.data.Count).ToList();
@@ -150,9 +166,9 @@ namespace DataVforBlazor
             StateHasChanged();
         }
 
-      private void MouseOver()
+        private void MouseOver()
         {
-            if(Config.hoverPause)
+            if (Config.hoverPause)
             {
                 StartScroll = false;
             }

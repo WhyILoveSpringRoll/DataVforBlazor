@@ -1,0 +1,52 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "data",
+            Info = "数据",
+            Type = "List<ScrollRankingBoardData>",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "rowNum",
+            Info = "表行数",
+            Type = "int",
+            DefaultValue = "5",
+        },
+        new()
+        {
+            Param = "waitTime",
+            Info = "轮播时间间隔(ms)",
+            Type = "int",
+            DefaultValue = "2000",
+        },
+        new()
+        {
+            Param = "singleScroll",
+            Info = "轮播方式，默认单条轮播,false则为按页轮播",
+            Type = "bool",
+            DefaultValue = "true",
+        },
+        new()
+        {
+            Param = "unit",
+            Info = "数值单位",
+            Type = "string",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "sort",
+            Info = "自动降序排列",
+            Type = "bool",
+            DefaultValue = "true",
+        }
+    };
+    string name = "ScrollRankingBoardConfig";
+
+}
