@@ -7,28 +7,32 @@
     const position = [w / 2, h / 2]
     if (config.textAlign === 'left') position[0] = 0
     if (config.textAlign === 'right') position[0] = w
+    console.log(config)
+    var myshape = {
+        number: config.number,
+        content: config.text,
+        toFixed: config.toFixed,
+        position: position,
+        rowGap: config.rowGap,
+        formatter: undefined
+    }
+    var mystyle = {
+        textAlign: config.textAlign,
+        textBaseline: 'middle',
+        fontSize: config.fontSize,
+        fill: config.fill,
+    }
 
     const graph = new GRAPHS.Text({
         animationCurve: config.animationCurve,
         animationFrame: config.animationFrame,
-        //shape: {
-        //    content: config.content,
-        //    position: [w / 2, h / 2],
-        //},
-        shape: config,
-        style: {
-            fontSize: config.fontSize,
-            fill: config.fill,
-            opacity: 0,
-        },
+        shape: myshape,
+        style: mystyle
     })
-    graph.shape.position = position
-    console.log(graph)
     render.add(graph)
+    mystyle.opacity = 1;
+    graph.animation('style', mystyle, true)
+    graph.animation('shape', myshape)
 
-    graph.animation('style', {
-        opacity: 1,
-        fontSize: config.fontSize,
-    })
 }
 

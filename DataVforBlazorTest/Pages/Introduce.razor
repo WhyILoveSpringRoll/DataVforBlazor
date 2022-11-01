@@ -15,13 +15,15 @@
     DigitalFlopConfig Config = new DigitalFlopConfig();
     protected override void OnInitialized()
     {
-        Config.number = new List<int> {100,10};
+        Config.number = new List<double> {100};
         Config.content = "{nt}个";
         base.OnInitialized();
     }
+
+
     private void Click()
     {
-      
+        Config.number = new List<double> { 1000 };
     }
     
 }
