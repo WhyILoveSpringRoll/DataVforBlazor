@@ -16,14 +16,24 @@
     protected override void OnInitialized()
     {
         Config.number = new List<double> {100};
-        Config.content = "{nt}个";
+        Config.content = "{0}元";
+        Config.textAlign = "left";
+        Config.toFixed = 0;
         base.OnInitialized();
     }
 
 
     private void Click()
     {
-        Config.number = new List<double> { 1000 };
+        if(Config.number[0]==100)
+        {
+              Config.number = new List<double> { 999 };
+        }
+        else
+        {
+               Config.number = new List<double> { 100};
+        }
+    
     }
     
 }

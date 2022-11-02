@@ -18,14 +18,14 @@ namespace DataVforBlazor
             {
                 if (value != _number)
                 {
+                    _oldnumber = _number.ToList();
                     _number = value;
-                    if(OnNumberChanged!=null)
-                    {
-                        OnNumberChanged(this, new EventArgs());
-                    }     
+                    OnNumberChanged?.Invoke(this, new EventArgs());
                 }
             }
         }
+
+        internal List<double> _oldnumber = new List<double>();
         private List<double> _number { get; set; } = new List<double>();
         public string content { get; set; } = "";
         public string text { get; set; } = "";
@@ -36,14 +36,15 @@ namespace DataVforBlazor
         public string fill { get; set; } = "#3de7c9";
         public string animationCurve { get; set; } = "easeOutCubic";
         public int animationFrame { get; set; } = 50;
-        
+        public delegate void NumberChanged(object sender, EventArgs e);
+        public event NumberChanged OnNumberChanged;
         public DigitalFlopConfig()
         {
             
         }
         public DigitalFlopConfig(DigitalFlopConfig config)
         {
-            number = config.number;
+            number = config.number.ToList();
             content = config.content;
             text = config.text;
             toFixed = config.toFixed;
@@ -53,8 +54,7 @@ namespace DataVforBlazor
             fill = config.fill;
             animationCurve = config.animationCurve;
             animationFrame = config.animationFrame;
+            _oldnumber = config._oldnumber.ToList();
         }
-        public delegate void NumberChanged(object sender, EventArgs e);
-        public event NumberChanged OnNumberChanged;
     }
 }
