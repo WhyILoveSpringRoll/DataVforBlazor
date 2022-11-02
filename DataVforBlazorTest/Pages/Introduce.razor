@@ -2,38 +2,16 @@
 @using DataVforBlazor
 
 <PageTitle>DataVforBlazor</PageTitle>
-<DigitalFlop Config="Config"></DigitalFlop>
+
 @*<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
     <div style="width:500px;height:300px;background-color:#282c34;">
         
     </div>
 </div>
 *@
-<Button OnClick="Click">button</Button>
+
 @code
 {
-    DigitalFlopConfig Config = new DigitalFlopConfig();
-    protected override void OnInitialized()
-    {
-        Config.number = new List<double> {100};
-        Config.content = "{0}元";
-        Config.textAlign = "left";
-        Config.toFixed = 0;
-        base.OnInitialized();
-    }
-
-
-    private void Click()
-    {
-        if(Config.number[0]==100)
-        {
-              Config.number = new List<double> { 999 };
-        }
-        else
-        {
-               Config.number = new List<double> { 100};
-        }
-    
-    }
+  
     
 }

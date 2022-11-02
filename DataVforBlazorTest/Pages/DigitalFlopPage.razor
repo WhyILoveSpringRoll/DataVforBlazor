@@ -1,0 +1,92 @@
+﻿@page "/digitalflop"
+@using DataVforBlazor
+@using System.ComponentModel
+@using AntDesign.TableModels
+@using DataVforBlazorTest.Pages.ExampleComponents.DigitalFlop
+@using Newtonsoft.Json
+<PageTitle>数字翻牌器</PageTitle>
+<Title Level="5">基本示例</Title>
+<div style="width:610px;height:150px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:200px;height:100px;background-color:#282c34;">
+        <DigitalFlop Config="config1"></DigitalFlop>
+    </div>
+</div>
+<div style="margin-top:20px;margin-bottom:50px">
+    <Button Style="margin-top:10px" Type="@ButtonType.Primary" OnClick="Button_Click1">切换数值</Button>
+</div>
+
+<Title Level="5">浮点数</Title>
+<div style="width:610px;height:150px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:200px;height:100px;background-color:#282c34;">
+        <DigitalFlop Config="config2"></DigitalFlop>
+    </div>
+</div>
+<div style="margin-top:20px;margin-bottom:50px">
+    <Button Style="margin-top:10px" Type="@ButtonType.Primary" OnClick="Button_Click2">切换数值</Button>
+</div>
+
+<Title Level="5">多数值</Title>
+<div style="width:610px;height:150px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:200px;height:100px;background-color:#282c34;">
+        <DigitalFlop Config="config3"></DigitalFlop>
+    </div>
+</div>
+<div style="margin-top:20px;margin-bottom:50px">
+    <Button Style="margin-top:10px" Type="@ButtonType.Primary" OnClick="Button_Click3">切换数值</Button>
+</div>
+
+
+<div style=" margin-top:50px">
+    <ConfigDoc />
+</div>
+@code {
+    DigitalFlopConfig config1 = new DigitalFlopConfig
+        {
+            number = new List<double> { 100 },
+            content = "{0}元",
+        };
+    DigitalFlopConfig config2 = new DigitalFlopConfig
+        {
+            number = new List<double> { 100 },
+            content = "{0}元",
+            toFixed = 2
+        };
+    DigitalFlopConfig config3 = new DigitalFlopConfig
+        {
+            number = new List<double> { 10,100 },
+            content = "{0}个{1}元",
+        };
+    private void Button_Click1()
+    {
+        if (config1.number[0] == 100)
+        {
+            config1.number = new List<double> { 999 };
+        }
+        else
+        {
+            config1.number = new List<double> { 100 };
+        }
+    }
+    private void Button_Click2()
+    {
+        if (config2.number[0] == 100)
+        {
+            config2.number = new List<double> { 999 };
+        }
+        else
+        {
+            config2.number = new List<double> { 100 };
+        }
+    }
+    private void Button_Click3()
+    {
+        if (config3.number[0] == 10)
+        {
+            config3.number = new List<double> { 100,1000 };
+        }
+        else
+        {
+            config3.number = new List<double> { 10,100 };
+        }
+    }
+}
