@@ -3,15 +3,23 @@
 
 <PageTitle>DataVforBlazor</PageTitle>
 
-@*<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
     <div style="width:500px;height:300px;background-color:#282c34;">
-        
+        <ActiveRingChart Config="config"></ActiveRingChart>
     </div>
 </div>
-*@
+
 
 @code
 {
-  
+    ActiveRingChartConfig config = new ActiveRingChartConfig { 
+        data=new List<ActiveRingData>{
+            new ActiveRingData{ name="A", value=10 },
+            new ActiveRingData{ name="B", value=20 },
+            new ActiveRingData{ name="C", value=30 },
+            new ActiveRingData{ name="D", value=40 },
+        }
+    };
+
     
 }

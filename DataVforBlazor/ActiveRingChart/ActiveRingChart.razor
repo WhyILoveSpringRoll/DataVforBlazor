@@ -1,0 +1,14 @@
+﻿@namespace DataVforBlazor
+<div class="dv-active-ring-chart" >
+    <div class="active-ring-chart-container" id="@ID" />
+    <div class="active-ring-info">
+        <div class="DigitalFlop">
+            <DigitalFlop Config="digitalFlopConfig"></DigitalFlop>
+        </div>
+        <div class="active-ring-name" style="font-size: @Config.fontSize">@Config.data[Config.activeIndex].name</div>
+    </div>
+</div>
+
+@code {
+
+}
