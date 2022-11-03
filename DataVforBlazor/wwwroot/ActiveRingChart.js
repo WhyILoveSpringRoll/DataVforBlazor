@@ -1,7 +1,10 @@
-﻿export function SetRingOption(id,config) {
+﻿var chart=null
+export function SetRingOption(id, config) {
     const Charts = window.Charts.default
     const dom = document.getElementById(id)
-    const chart = new Charts(dom)
+    if (chart == null) {
+        chart = new Charts(dom)
+    }
     console.log(config)
     chart.setOption(config, true)
 }

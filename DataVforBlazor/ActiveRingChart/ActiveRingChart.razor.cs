@@ -70,36 +70,36 @@ namespace DataVforBlazor
 
         private async Task Ini()
         {
-           await SetRingOption();
-           await RingAnimation();
+            await SetRingOption(GetRingOption());
+            await RingAnimation();
         }
 
 
-        private async Task SetRingOption()
+        private async Task SetRingOption(RingOption option)
         {
-            var option = GetRingOption();
+            
             Lazy<Task<IJSObjectReference>> moduleTask;
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
             "import", "./_content/DataVforBlazor/ActiveRingChart.js").AsTask());
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("SetRingOption", ID, option);
         }
-        private object GetRingOption()
+        private RingOption GetRingOption()
         {
             var radius = GetRealRadius(false);
-            var result = new
+            Config.data.ForEach(i => i.radius = radius.ToList());
+            RingOption option = new RingOption();
+            option.series = new List<Series>() {
+            new Series
             {
-                series = new[] {
-                new {
-                    type = "pie",
-                    data = Config.data,
-                    radius = radius,
-                    outsideLabel = new { show = true },
-                } },
-                //color = Config.color
+                type="pie",
+                data=Config.data,
+                radius=radius,
+                outsideLabel=new OutSideLableConfig()
+            }
             };
-            var aaa = result.GetType();
-            return result;
+            //option.color = Config.color;
+            return option;
         }
 
         private List<double> GetRealRadius(bool active)
@@ -143,7 +143,42 @@ namespace DataVforBlazor
             var radius = GetRealRadius(false);
             var active = GetRealRadius(true);
             var option = GetRingOption();
-      
+            var series = option.series.First();
+            
+            for (int i = 0; i < series.data.Count; i++)
+            {
+                if(i==Config.activeIndex)
+                {
+                    series.data[i].radius = active.ToList();
+                }
+                else
+                {
+                    series.data[i].radius = radius.ToList();
+                }
+            }
+            SetRingOption(option);
+            StateHasChanged();
+            Config.activeIndex += 1;
+
+            if (Config.activeIndex >= Config.data.Count)
+                Config.activeIndex = 0;
+        }
+
+        public class RingOption
+        {
+            public List<Series> series { get; set; }
+            public List<string> color { get; set; }
+        }
+        public class Series
+        {
+            public string type { get; set; } = "";
+            public List<ActiveRingData> data { get; set; }
+            public List<double> radius { get; set; }
+            public OutSideLableConfig outsideLabel { get; set; }
+        }
+        public class OutSideLableConfig
+        {
+            public bool show { get; set; } = false;
         }
     }
 }
