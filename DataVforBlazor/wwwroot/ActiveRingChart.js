@@ -5,7 +5,6 @@ export function SetRingOption(id, config) {
     if (chart == null) {
         chart = new Charts(dom)
     }
-    console.log(config)
     chart.setOption(config, true)
 }
 

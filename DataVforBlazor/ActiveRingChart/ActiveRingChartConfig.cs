@@ -27,6 +27,6 @@ namespace DataVforBlazor
     {
         public string name { get; set; }
         public double value { get; set; }
-        internal List<double> radius { get; set; }
+        public List<double> radius { get; set; }
     }
 }

@@ -26,21 +26,18 @@ namespace DataVforBlazor
         protected IJSRuntime jsRuntime { get; set; }
 
         protected override async Task OnInitializedAsync()
-
         {
-            digitalFlopConfig.content = "hello";
             digitalFlopConfig.fill = Config.fill;
             digitalFlopConfig.fontSize = Config.fontSize;
             digitalFlopConfig.animationCurve = Config.animationCurve;
             digitalFlopConfig.animationFrame = Config.animationFrame;
             digitalFlopConfig.toFixed = Config.toFixed;
-
+            SetDigitalFlopConfig();
             Lazy<Task<IJSObjectReference>> moduleTask;
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
             "import", "./_content/DataVforBlazor/ActiveRingChart.js").AsTask());
             var module = await moduleTask.Value;
             MaxRaidus = int.Parse((await module.InvokeAsync<object>("GetMaxRadius", ID)).ToString());
-            //await module.InvokeVoidAsync("SetRingOption", ID, Config);
             await Ini();
             base.OnInitializedAsync();
         }
@@ -63,7 +60,7 @@ namespace DataVforBlazor
                 double percent = (value[Config.activeIndex] / sum) * 100;
                 displayValue = percent;
             }
-            digitalFlopConfig.content = Config.showOriginValue ? "{0}" + Config.digitalFlopUnit : "{0}" + Config.digitalFlopUnit == "" ? "%" : Config.digitalFlopUnit;
+            digitalFlopConfig.content = Config.showOriginValue ? "{0}" + Config.digitalFlopUnit : "{0}" + (Config.digitalFlopUnit == "" ? "%" : Config.digitalFlopUnit);
             digitalFlopConfig.number = new List<double> { displayValue };
         }
 
@@ -77,7 +74,6 @@ namespace DataVforBlazor
 
         private async Task SetRingOption(RingOption option)
         {
-            
             Lazy<Task<IJSObjectReference>> moduleTask;
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
             "import", "./_content/DataVforBlazor/ActiveRingChart.js").AsTask());
@@ -138,7 +134,7 @@ namespace DataVforBlazor
             }
             await SetTimer();
         }
-        private void StartCountDownForTimeSpan(object o)
+        private async void StartCountDownForTimeSpan(object o)
         {
             var radius = GetRealRadius(false);
             var active = GetRealRadius(true);
@@ -156,10 +152,10 @@ namespace DataVforBlazor
                     series.data[i].radius = radius.ToList();
                 }
             }
-            SetRingOption(option);
+            SetDigitalFlopConfig();
+          await SetRingOption(option);
             StateHasChanged();
             Config.activeIndex += 1;
-
             if (Config.activeIndex >= Config.data.Count)
                 Config.activeIndex = 0;
         }

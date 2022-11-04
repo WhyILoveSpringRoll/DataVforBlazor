@@ -27,8 +27,8 @@
         }
 
         .dv-active-ring-chart .active-ring-info .active-ring-name {
-            width: 100px;
-            height: 30px;
+       /*     width: 100px;
+            height: 30px;*/
             color: #fff;
             text-align: center;
             vertical-align: middle;
