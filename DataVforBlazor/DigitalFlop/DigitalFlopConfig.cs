@@ -35,7 +35,7 @@ namespace DataVforBlazor
         public int fontSize { get; set; } = 30;
         public string fill { get; set; } = "#3de7c9";
         public string animationCurve { get; set; } = "easeOutCubic";
-        public int animationFrame { get; set; } = 50;
+        public int animationFrame { get; set; } = 20;
         public delegate void NumberChanged(object sender, EventArgs e);
         public event NumberChanged OnNumberChanged;
         public DigitalFlopConfig()

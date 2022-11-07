@@ -1,0 +1,101 @@
+﻿
+<ParamTable ComponentName="@name" Data="@data" />
+
+@code {
+    Data[] data = new Data[]
+    {
+        new()
+        {
+            Param = "radius	",
+            Info = "环半径，'50%'|100",
+            Type = "string",
+            DefaultValue = "50%",
+        },
+         new()
+        {
+            Param = "activeRadius",
+            Info = "环半径（动态）'55%'|110",
+            Type = "string",
+            DefaultValue = "55%",
+        },
+        new()
+        {
+            Param = "data",
+            Info = "环数据",
+            Type = "List<ActiveRingData>",
+            DefaultValue = "",
+        },
+        new()
+        {
+            Param = "lineWidth",
+            Info = "环线条宽度",
+            Type = "int",
+            DefaultValue = "20",
+        },
+        new()
+        {
+            Param = "activeTimeGap",
+            Info = "切换间隔(ms)",
+            Type = "int",
+            DefaultValue = "3000",
+        },
+        new()
+        {
+            Param = "color",
+            Info = "环颜色",
+            Type = "List<string>",
+            DefaultValue = "",
+        },
+         new()
+        {
+            Param = "fontSize",
+            Info = "文字大小",
+            Type = "int",
+            DefaultValue = "25",
+        },
+         new()
+        {
+            Param = "fill",
+            Info = "文字颜色",
+            Type = "string",
+            DefaultValue = "#fff",
+        },
+        new()
+        {
+            Param = "digitalFlopToFixed",
+            Info = "数字翻牌器小数位数",
+            Type = "int",
+            DefaultValue = "0",
+        },
+        new()
+        {
+            Param = "digitalFlopUnit",
+            Info = "数字翻牌器单位",
+            Type = "string",
+            DefaultValue = "",
+        },
+        new()
+        {
+            Param = "showOriginValue",
+            Info = "显示原始值",
+            Type = "bool",
+            DefaultValue = "false",
+        },
+           new()
+        {
+            Param = "animationCurve",
+            Info = "动效曲线",
+            Type = "string",
+            DefaultValue = "easeOutCubic",
+        },
+           new()
+        {
+            Param = "animationFrame",
+            Info = "动效帧数",
+            Type = "int",
+            DefaultValue = "50",
+        }
+    };
+    string name = "ActiveRingChart";
+
+}

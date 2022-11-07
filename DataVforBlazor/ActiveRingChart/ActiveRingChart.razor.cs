@@ -6,11 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DataVforBlazor
 {
-    public partial class ActiveRingChart
+    public partial class ActiveRingChart: IDisposable
     {
 
         public int MaxRaidus { get; set; } = 0;
@@ -22,6 +23,7 @@ namespace DataVforBlazor
         private List<double> _tempnumber = new List<double>();
         private int REFRESH_INTERVAL = 0;
         private TimeSpan _countDown = TimeSpan.Zero;
+        private IJSObjectReference chart;
         [Inject]
         protected IJSRuntime jsRuntime { get; set; }
 
@@ -67,18 +69,26 @@ namespace DataVforBlazor
 
         private async Task Ini()
         {
+            await IniObj();
             await SetRingOption(GetRingOption());
             await RingAnimation();
         }
 
-
+        private async Task IniObj()
+        {
+            Lazy<Task<IJSObjectReference>> moduleTask;
+            moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
+            "import", "./_content/DataVforBlazor/ActiveRingChart.js").AsTask());
+            var module = await moduleTask.Value;
+            chart=  await module.InvokeAsync<IJSObjectReference>("Ini", ID);
+        }
         private async Task SetRingOption(RingOption option)
         {
             Lazy<Task<IJSObjectReference>> moduleTask;
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
             "import", "./_content/DataVforBlazor/ActiveRingChart.js").AsTask());
             var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("SetRingOption", ID, option);
+            await module.InvokeVoidAsync("SetRingOption", ID, option,chart);
         }
         private RingOption GetRingOption()
         {
@@ -160,6 +170,11 @@ namespace DataVforBlazor
                 Config.activeIndex = 0;
         }
 
+        public void Dispose()
+        {
+             _timer?.Dispose();
+        }
+
         public class RingOption
         {
             public List<Series> series { get; set; }
@@ -176,5 +191,7 @@ namespace DataVforBlazor
         {
             public bool show { get; set; } = false;
         }
+        
+       
     }
 }

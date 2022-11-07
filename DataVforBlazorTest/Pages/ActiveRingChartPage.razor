@@ -1,0 +1,89 @@
+﻿@page "/ActiveRingChart"
+@using DataVforBlazor
+@using System.ComponentModel
+@using AntDesign.TableModels
+@using DataVforBlazorTest.Pages.ExampleComponents.AvticeRingChart
+@using Newtonsoft.Json
+<PageTitle>动态环图</PageTitle>
+<Title Level="4">基本示例</Title>
+<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:500px;height:300px;background-color:#282c34;">
+        <ActiveRingChart Config="config1"></ActiveRingChart>
+    </div>
+</div>
+
+<Title Level="4">线条粗细</Title>
+<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:500px;height:300px;background-color:#282c34;">
+        <ActiveRingChart Config="config2"></ActiveRingChart>
+    </div>
+</div>
+
+<Title Level="4">调节半径</Title>
+<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:500px;height:300px;background-color:#282c34;">
+        <ActiveRingChart Config="config3"></ActiveRingChart>
+    </div>
+</div>
+<Title Level="4">显示原始值</Title>
+<div style="width:610px;height:350px;background-color:#282c34;align-items:center;justify-content:center;display:flex">
+    <div style="width:500px;height:300px;background-color:#282c34;">
+        <ActiveRingChart Config="config4"></ActiveRingChart>
+    </div>
+</div>
+
+
+<div style=" margin-top:50px">
+    <ConfigDoc />
+</div>
+@code {
+    ActiveRingChartConfig config1 = new ActiveRingChartConfig
+        {
+            data = new List<ActiveRingData>{
+            new ActiveRingData{ name="周口", value=55 },
+            new ActiveRingData{ name="南阳", value=120 },
+            new ActiveRingData{ name="西峡", value=78 },
+            new ActiveRingData{ name="驻马店", value=66 },
+              new ActiveRingData{ name="新乡", value=80 },
+        }
+        };
+
+    ActiveRingChartConfig config2 = new ActiveRingChartConfig
+        {
+            data = new List<ActiveRingData> {
+                new ActiveRingData { name = "周口", value = 55 },
+                new ActiveRingData { name = "南阳", value = 120 },
+                new ActiveRingData { name = "西峡", value = 78 },
+                new ActiveRingData { name = "驻马店", value = 66 },
+                new ActiveRingData { name = "新乡", value = 80 },
+            },
+            lineWidth = 10,
+        };
+    ActiveRingChartConfig config3 = new ActiveRingChartConfig
+        {
+            data = new List<ActiveRingData> {
+                new ActiveRingData { name = "周口", value = 55 },
+                new ActiveRingData { name = "南阳", value = 120 },
+                new ActiveRingData { name = "西峡", value = 78 },
+                new ActiveRingData { name = "驻马店", value = 66 },
+                new ActiveRingData { name = "新乡", value = 80 },
+            },
+            radius = "40%",
+            activeRadius = "45%",
+            fontSize=20,
+        };
+    ActiveRingChartConfig config4 = new ActiveRingChartConfig
+        {
+            data = new List<ActiveRingData> {
+                new ActiveRingData { name = "周口", value = 55 },
+                new ActiveRingData { name = "南阳", value = 120 },
+                new ActiveRingData { name = "西峡", value = 78 },
+                new ActiveRingData { name = "驻马店", value = 66 },
+                new ActiveRingData { name = "新乡", value = 80 },
+            },
+            radius = "40%",
+            activeRadius = "45%",
+            fontSize = 20,
+            showOriginValue=true,
+        };
+}
