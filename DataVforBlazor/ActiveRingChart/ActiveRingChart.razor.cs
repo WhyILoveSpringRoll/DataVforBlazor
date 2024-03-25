@@ -189,7 +189,7 @@ namespace DataVforBlazor
         }
         public class OutSideLableConfig
         {
-            public bool show { get; set; } = false;
+            public bool show { get; set; } = true;
         }
         
        
