@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/DataVforBlazorTest/wwwroot/222.png
+/DataVforBlazorTest/wwwroot/布局.png
+/DataVforBlazorTest/wwwroot/background.jpg
+/DataVforBlazorTest/Pages/FlylineChartPage - 复制.razor
+/DataVforBlazorTest/Pages/Demo.razor
+/DataVforBlazorTest/Shared/EmptyLayout.razor.css
+/DataVforBlazorTest/Shared/EmptyLayout.razor
